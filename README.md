@@ -1,8 +1,16 @@
+# AtTheMoment
 
-Before you can start the program you need to add the local.properties file inside the \AndroidStudioProjects\AtTheMoment directory:
+## Project Setup
 
-For Windows
-sdk.dir=C:\\Users\\USERNAME\\AppData\\Local\\Android\\Sdk
+Before starting the program, you need to add the `local.properties` file in the following directory:
 
-For Mac
-sdk.dir=/Users/USERNAME/Library/Android/sdk
+### `local.properties` File Content
+
+Add the appropriate SDK path in the file based on your operating system:
+
+- **For Windows**
+  ```properties
+  sdk.dir=C:\\Users\\USERNAME\\AppData\\Local\\Android\\Sdk
+- **For Mac**
+  ```properties
+  sdk.dir=/Users/USERNAME/Library/Android/sdk
