@@ -11,6 +11,46 @@ public class Mezzo {
     @SerializedName("Code")
     public int code;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    public Line getLine() {
+        return line;
+    }
+
+    public void setLine(Line line) {
+        this.line = line;
+    }
+
+    public List<Stop> getStops() {
+        return stops;
+    }
+
+    public void setStops(List<Stop> stops) {
+        this.stops = stops;
+    }
+
     @SerializedName("Direction")
     public int direction;
 
