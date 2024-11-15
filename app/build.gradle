@@ -32,8 +32,7 @@ android {
 }
 
 dependencies {
-    implementation libs.unirest.java
-    implementation libs.unirest.objectmapper.jackson
+    implementation libs.gson
     implementation libs.osmdroid.android
     implementation libs.appcompat
     implementation libs.material
