@@ -51,6 +51,17 @@ public class Mezzo {
         this.stops = stops;
     }
 
+    @Override
+    public String toString() {
+        return "Mezzo{" +
+                "id=" + id +
+                ", code=" + code +
+                ", direction=" + direction +
+                ", line=" + line +
+                ", stops=" + stops +
+                '}';
+    }
+
     @SerializedName("Direction")
     public int direction;
 
