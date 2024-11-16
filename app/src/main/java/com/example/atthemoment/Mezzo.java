@@ -6,32 +6,41 @@ import java.util.List;
 public class Mezzo {
 
     @SerializedName("Id")
-    public int id;
+    public String id;
 
     @SerializedName("Code")
-    public int code;
+    public Integer code;
 
-    public int getId() {
-        return id;
+    @SerializedName("Direction")
+    public Integer direction;
+
+    @SerializedName("Line")
+    public Line line;
+
+    @SerializedName("Stops")
+    public List<Stop> stops;
+
+    public String getId() {
+        return id == null ? "" : id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getCode() {
-        return code;
+    public Integer getCode() {
+        return code == null ? 0 : code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
-    public int getDirection() {
-        return direction;
+    public Integer getDirection() {
+        return direction == null ? 0 : direction;
     }
 
-    public void setDirection(int direction) {
+    public void setDirection(Integer direction) {
         this.direction = direction;
     }
 
@@ -54,7 +63,7 @@ public class Mezzo {
     @Override
     public String toString() {
         return "Mezzo{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", code=" + code +
                 ", direction=" + direction +
                 ", line=" + line +
@@ -62,44 +71,33 @@ public class Mezzo {
                 '}';
     }
 
-    @SerializedName("Direction")
-    public int direction;
-
-    @SerializedName("Line")
-    public Line line;
-
-    @SerializedName("Stops")
-    public List<Stop> stops;
-
     public static class Line {
 
         @SerializedName("OperatorCode")
-        public int operatorCode;
+        public String operatorCode;
 
         @SerializedName("LineCode")
-        public int lineCode;
+        public Integer lineCode;
 
         @SerializedName("LineDescription")
         public String lineDescription;
 
         @SerializedName("Suburban")
-        public boolean suburban;
+        public Boolean suburban;
 
         @SerializedName("TransportMode")
-        public int transportMode;
+        public Integer transportMode;
 
         @SerializedName("OtherRoutesAvailable")
-        public boolean otherRoutesAvailable;
-
-//        @SerializedName("Links")
-//        public String Links;
+        public Boolean otherRoutesAvailable;
     }
+
     public static class Stop {
         @SerializedName("OperatorCode")
-        public int operatorCode;
+        public String operatorCode;
 
         @SerializedName("Code")
-        public int code;
+        public Integer code;
 
         @SerializedName("Description")
         public String description;
@@ -108,42 +106,18 @@ public class Mezzo {
         public Location location;
 
         @SerializedName("PointType")
-        public int pointType;
-
-        //@SerializedName("OtherLines")
-        //public List<Object> otherLines;
+        public Integer pointType;
 
         @SerializedName("StopType")
         public String stopType;
-
-        //@SerializedName("Links")
-        //public List<Link> links;
     }
-        public static class Location {
 
-            @SerializedName("X")
-            public double x;
+    public static class Location {
 
-            @SerializedName("Y")
-            public double y;
-        }
-            /*public static class Link {
+        @SerializedName("X")
+        public Double x;
 
-        @SerializedName("Rel")
-        public String rel;
-
-        @SerializedName("Href")
-        public String href;
-
-        @SerializedName("Title")
-        public String title;
-
-        // Getters e Setters
-
-    }*/
+        @SerializedName("Y")
+        public Double y;
     }
-    
-
-
-
-
+}

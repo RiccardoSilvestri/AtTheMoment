@@ -29,40 +29,40 @@ public class SecondActivity extends Activity {
 
     public void getQuestionsUsingHttpClient() {
         new Thread(() -> {
-
             HttpURLConnection connection = null;
 
             try {
                 URL url = new URL("https://giromilano.atm.it/proxy.tpportal/api/tpportal/tpl/journeyPatterns/93%7C0?alternativeRoutesMode=false");
                 connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET");
-                connection.setRequestProperty("Accept", "application/json, text/plain, */*");
-                connection.setRequestProperty("Accept-Encoding", "gzip, deflate, br, zstd");
-                connection.setRequestProperty("Accept-Language", "en-US,en;q=0.9,it-IT;q=0.8,it;q=0.7");
-                connection.setRequestProperty("Referer", "https://giromilano.atm.it/");
-                connection.setRequestProperty("Sec-CH-UA", "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"");
-                connection.setRequestProperty("Sec-CH-UA-Mobile", "?0");
-                connection.setRequestProperty("Sec-CH-UA-Platform", "\"Windows\"");
-                connection.setRequestProperty("Sec-Fetch-Dest", "empty");
-                connection.setRequestProperty("Sec-Fetch-Mode", "cors");
-                connection.setRequestProperty("Sec-Fetch-Site", "same-origin");
-                connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36");
 
-                int responseCode = connection.getResponseCode();
-                try (InputStream inputStream = new GZIPInputStream(connection.getInputStream());
-                     BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+                connection.setRequestProperty("accept", "application/json, text/plain, */*");
+                connection.setRequestProperty("accept-encoding", "gzip, deflate, br, zstd");
+                connection.setRequestProperty("accept-language", "en-US,en;q=0.9,it-IT;q=0.8,it;q=0.7");
+                connection.setRequestProperty("referer", "https://giromilano.atm.it/");
+                connection.setRequestProperty("sec-ch-ua", "\"Chromium\";v=\"130\", \"Google Chrome\";v=\"130\", \"Not?A_Brand\";v=\"99\"");
+                connection.setRequestProperty("sec-ch-ua-mobile", "?0");
+                connection.setRequestProperty("sec-ch-ua-platform", "\"Windows\"");
+                connection.setRequestProperty("sec-fetch-dest", "empty");
+                connection.setRequestProperty("sec-fetch-mode", "cors");
+                connection.setRequestProperty("sec-fetch-site", "same-origin");
+                connection.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36");
 
-                    String response = reader.lines().collect(Collectors.joining("\n"));
+                InputStream inputStream = new GZIPInputStream(connection.getInputStream()); //decoprimo in Gzip
 
-                    Gson gson = new Gson();
-                    Mezzo myResponseObject = gson.fromJson(response, Mezzo.class);
-                    Log.d("Response", myResponseObject.toString());
-                }
+                InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8"); // converto da byte in caratteri
+
+                Gson gson = new Gson();
+                Mezzo myResponseObject = gson.fromJson(reader, Mezzo.class); //converte da json a oggetto java
+
+                Log.d("Response", myResponseObject.toString());
+                Log.d("ID", myResponseObject.getId());
+                Log.d("Description", myResponseObject.line.lineDescription);
 
             } catch (Exception e) {
-                Log.e("Error", "Errore");
+                Log.e("Error", "Errore: " + e.getMessage(), e);
             }
-
         }).start();
     }
+
 }
