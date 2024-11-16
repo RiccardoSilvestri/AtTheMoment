@@ -59,6 +59,15 @@ public class SecondActivity extends Activity {
                 Log.d("ID", myResponseObject.getId());
                 Log.d("Description", myResponseObject.line.lineDescription);
 
+                for (int i = 0; i < myResponseObject.stops.size(); i++) {
+                    Log.d("Stop","ID: "+myResponseObject.stops.get(i).code);
+                    Log.d("Stop","Fermata: "+myResponseObject.stops.get(i).description);
+                    Log.d("Stop", String.valueOf(myResponseObject.stops.get(i).location.x));
+                    Log.d("Stop", String.valueOf(myResponseObject.stops.get(i).location.y));
+                    Log.d("Stop", "---------");
+                }
+
+
             } catch (Exception e) {
                 Log.e("Error", "Errore: " + e.getMessage(), e);
             }
