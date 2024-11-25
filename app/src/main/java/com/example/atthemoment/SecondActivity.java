@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 
@@ -49,14 +50,19 @@ public class SecondActivity extends Activity {
                 connection.setRequestProperty("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36");
 
                 InputStream inputStream = new GZIPInputStream(connection.getInputStream()); //decoprimo in Gzip
-
                 InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8"); // converto da byte in caratteri
-
                 Gson gson = new Gson();
                 Mezzo myResponseObject = gson.fromJson(reader, Mezzo.class); //converte da json a oggetto java
 
                 Log.d("Response", myResponseObject.toString());
                 Log.d("ID", myResponseObject.getId());
+
+                TextView idMezzo = (TextView)findViewById(R.id.idMezzo);
+                idMezzo.setText(myResponseObject.getId());
+
+                TextView descrptionMezzo = (TextView)findViewById(R.id.descrptionMezzo);
+                descrptionMezzo.setText(myResponseObject.line.lineDescription);
+
                 Log.d("Description", myResponseObject.line.lineDescription);
 
                 for (int i = 0; i < myResponseObject.stops.size(); i++) {
