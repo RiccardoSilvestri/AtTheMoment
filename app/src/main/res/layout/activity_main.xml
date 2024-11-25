@@ -1,27 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
     tools:context=".MainActivity">
 
+    <!-- Header -->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="At The Moment"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/subHeaderText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Informazioni recenti"
+        android:textColor="#666666"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:paddingBottom="16dp" />
+
+    <!-- Grid Layout for Main Buttons -->
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:padding="16dp">
+
+        <!-- Tram Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/button_background"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/tramIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_tram" />
+
+            <TextView
+                android:id="@+id/tramText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRAM"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingTop="8dp" />
+        </LinearLayout>
+
+        <!-- Bus Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/button_background"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/busIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_bus" />
+
+            <TextView
+                android:id="@+id/busText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BUS"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingTop="8dp" />
+        </LinearLayout>
+
+        <!-- Train Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/button_background"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/trainIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_train" />
+
+            <TextView
+                android:id="@+id/trainText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRENO"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingTop="8dp" />
+        </LinearLayout>
+
+        <!-- Metro Button -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/button_background"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/metroIcon"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/ic_metro" />
+
+            <TextView
+                android:id="@+id/metroText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="METRO"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingTop="8dp" />
+        </LinearLayout>
+    </GridLayout>
 
     <Button
         android:id="@+id/button_go_to_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vai alla SecondActivity"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="488dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="center"
+        android:text="← Torna Indietro"
+        android:background="#E0E0E0"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp" />
+    <!-- Back Button -->
+
+    <!-- Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0E0E0"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/navTrain"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_train" />
+
+        <ImageView
+            android:id="@+id/navTram"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_tram" />
+
+        <ImageView
+            android:id="@+id/navMetro"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_metro" />
+
+        <ImageView
+            android:id="@+id/navBus"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="8dp"
+            android:src="@drawable/ic_bus" />
+    </LinearLayout>
+</LinearLayout>
+
