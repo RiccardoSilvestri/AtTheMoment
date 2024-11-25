@@ -183,28 +183,28 @@
             android:id="@+id/navTrain"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
+            android:layout_margin="15dp"
             android:src="@drawable/ic_train" />
 
         <ImageView
             android:id="@+id/navTram"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
+            android:layout_margin="15dp"
             android:src="@drawable/ic_tram" />
 
         <ImageView
             android:id="@+id/navMetro"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
+            android:layout_margin="15dp"
             android:src="@drawable/ic_metro" />
 
         <ImageView
             android:id="@+id/navBus"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_margin="8dp"
+            android:layout_margin="15dp"
             android:src="@drawable/ic_bus" />
     </LinearLayout>
 </LinearLayout>
