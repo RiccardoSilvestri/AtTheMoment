@@ -10,6 +10,7 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 osmdroidAndroid = "6.1.16"
 unirestJava = "3.13.9"
+playServicesMaps = "19.0.0"
 
 [libraries]
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -23,6 +24,7 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 osmdroid-android = { module = "org.osmdroid:osmdroid-android", version.ref = "osmdroidAndroid" }
 unirest-java = { module = "com.konghq:unirest-java", version.ref = "unirestJava" }
 unirest-objectmapper-jackson = { module = "com.konghq:unirest-objectmapper-jackson", version.ref = "unirestJava" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
