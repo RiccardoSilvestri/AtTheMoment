@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
-    android:orientation="vertical"
     android:background="@drawable/gradient_background_page1"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:weightSum="100">
 
-    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,161 +46,35 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <!-- Grid Layout for Main Buttons -->
-    <GridLayout
+    <!-- Grid Layout for Main Lines -->
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="61"
-        android:rowCount="2"
-        android:columnCount="2"
-        android:padding="16dp"
-        >
+        android:numColumns="5"
+        android:padding="16dp">
 
-        <!-- Tram Button -->
-        <LinearLayout
-            android:id="@+id/button_go_lines"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/tramIcon"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_tram" />
-
-            <TextView
-                android:id="@+id/tramText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TRAM"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
-            android:paddingTop="8dp" />
-        </LinearLayout>
-
-        <!-- Bus Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/busIcon"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_bus" />
-
-            <TextView
-                android:id="@+id/busText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BUS"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
-
-                android:paddingTop="8dp" />
-        </LinearLayout>
-
-        <!-- Train Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/trainIcon"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_train" />
-
-            <TextView
-                android:id="@+id/trainText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TRENO"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
-
-                android:paddingTop="8dp" />
-        </LinearLayout>
-
-        <!-- Metro Button -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
-
-            <ImageView
-                android:id="@+id/metroIcon"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:src="@drawable/ic_metro" />
-
-            <TextView
-                android:id="@+id/metroText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="METRO"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
-                android:paddingTop="8dp" />
-        </LinearLayout>
-    </GridLayout>
+    </GridView>
 
     <Button
-        android:id="@+id/button_go_to_second"
+        android:id="@+id/button_go_to_main"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="7"
         android:layout_gravity="center"
-        android:text="← Torna Indietro"
+        android:layout_weight="7"
         android:background="#E0E0E0"
-        android:textSize="16sp"
         android:padding="12dp"
-        />
+        android:text="← Torna Indietro"
+        android:textSize="16sp" />
     <!-- Back Button -->
+
 
     <!-- NavBar Start -->
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="22dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="12"
-
-        >
+        android:layout_marginTop="22dp"
+        android:layout_weight="12">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -315,4 +185,3 @@
     </RelativeLayout>
     <!-- NavBar End -->
 </LinearLayout>
-
