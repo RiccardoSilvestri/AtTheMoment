@@ -1,13 +1,18 @@
 package com.example.atthemoment;
 
+import static java.lang.Integer.parseInt;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.example.atthemoment.controller.RicercaMezzi;
 
 public class MainActivity extends Activity {
 
@@ -24,16 +29,51 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-        LinearLayout buttonLines = findViewById(R.id.button_go_lines);
-        //buttonLines.getTag();
-        //buttonLines.setOnClickListener();
-        buttonLines.setOnClickListener(new View.OnClickListener() {
+        LinearLayout buttonGoTram = findViewById(R.id.button_go_tram);
+        buttonGoTram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                RicercaMezzi ricercaMezzi = new RicercaMezzi();
+                ricercaMezzi.listaMezzi(parseInt(buttonGoTram.getTag().toString()));
+                Log.d("ciao",ricercaMezzi.toString());
                 Intent intent = new Intent(MainActivity.this, LinesActivity.class);
                 startActivity(intent);
             }
         });
+        LinearLayout buttonGoMeto = findViewById(R.id.button_go_metro);
+        buttonGoMeto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RicercaMezzi ricercaMezzi = new RicercaMezzi();
+                ricercaMezzi.listaMezzi(parseInt(buttonGoMeto.getTag().toString()));
+                Log.d("ciao",ricercaMezzi.toString());
+                Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                startActivity(intent);
+            }
+        });
+        LinearLayout buttonGoAutobus = findViewById(R.id.button_go_autobus);
+        buttonGoAutobus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RicercaMezzi ricercaMezzi = new RicercaMezzi();
+                ricercaMezzi.listaMezzi(parseInt(buttonGoAutobus.getTag().toString()));
+                Log.d("ciao",ricercaMezzi.toString());
+                Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                startActivity(intent);
+            }
+        });
+        LinearLayout buttonGoTreno = findViewById(R.id.button_go_treno);
+        buttonGoTreno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RicercaMezzi ricercaMezzi = new RicercaMezzi();
+                ricercaMezzi.listaMezzi(parseInt(buttonGoTreno.getTag().toString()));
+                Log.d("ciao",ricercaMezzi.toString());
+                Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override

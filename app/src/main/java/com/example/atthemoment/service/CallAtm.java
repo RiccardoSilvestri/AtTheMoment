@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
-public class callAtm {
+public class CallAtm {
     public InputStreamReader infoMezzo(String numero,int rotta) throws IOException {
         String link = "https://giromilano.atm.it/proxy.tpportal/api/tpportal/tpl/journeyPatterns/"+numero+"%7C"+rotta+"?alternativeRoutesMode=false";
         return fetchCall(link);
@@ -16,12 +16,12 @@ public class callAtm {
         String link = "https://giromilano.atm.it/proxy.tpportal/api/tpportal/geodata/pois/stops/"+numero;
         return fetchCall(link);
     }
-    public InputStreamReader listaMezzi() throws IOException{
+    public static InputStreamReader listaMezzi() throws IOException{
         String link = "https://giromilano.atm.it/proxy.tpportal/api/tpPortal/tpl/journeyPatterns";
         return fetchCall(link);
     }
 
-    public InputStreamReader fetchCall(String link) throws IOException {
+    public static InputStreamReader fetchCall(String link) throws IOException {
         HttpURLConnection connection = null;
         URL url = new URL(link);
         connection = (HttpURLConnection) url.openConnection();
@@ -36,13 +36,13 @@ public class callAtm {
         return fixResponse(connection);
     }
 
-    public InputStreamReader fixResponse(HttpURLConnection connection) throws IOException {
+    public static InputStreamReader fixResponse(HttpURLConnection connection) throws IOException {
         InputStream inputStream = new GZIPInputStream(connection.getInputStream());
         InputStreamReader fixedResponse = new InputStreamReader(inputStream, "UTF-8");
         return fixedResponse;
     }
 
-    public <T> T fixGzipResponse(InputStreamReader response, Class<T> clazz) {
+    public static <T> T fixGzipResponse(InputStreamReader response, Class<T> clazz) {
         Gson gson = new Gson();
         return gson.fromJson(response, clazz);
     }

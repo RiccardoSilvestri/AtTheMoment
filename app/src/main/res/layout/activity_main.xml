@@ -62,9 +62,9 @@
 
         <!-- Tram Button -->
         <LinearLayout
-            android:id="@+id/button_go_lines"
+            android:id="@+id/button_go_tram"
             android:layout_width="0dp"
-            android:tag="6"
+            android:tag="1"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
@@ -94,7 +94,8 @@
 
         <!-- Bus Button -->
         <LinearLayout
-            android:id="@+id/button_go_line_3"
+            android:id="@+id/button_go_autobus"
+            android:tag="3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -126,7 +127,8 @@
 
         <!-- Train Button -->
         <LinearLayout
-            android:id="@+id/button_go_line_2"
+            android:id="@+id/button_go_treno"
+            android:tag="2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -158,7 +160,8 @@
 
         <!-- Metro Button -->
         <LinearLayout
-            android:id="@+id/button_go_line_0"
+            android:id="@+id/button_go_metro"
+            android:tag="0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
