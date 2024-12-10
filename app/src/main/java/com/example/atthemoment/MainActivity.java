@@ -33,21 +33,17 @@ public class MainActivity extends Activity {
         buttonGoTram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RicercaMezzi ricercaMezzi = new RicercaMezzi();
-                ricercaMezzi.listaMezzi(parseInt(buttonGoTram.getTag().toString()));
-                Log.d("ciao",ricercaMezzi.toString());
                 Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                intent.putExtra("Bottone",parseInt(buttonGoTram.getTag().toString()) );
                 startActivity(intent);
             }
         });
-        LinearLayout buttonGoMeto = findViewById(R.id.button_go_metro);
-        buttonGoMeto.setOnClickListener(new View.OnClickListener() {
+        LinearLayout buttonGoMetro = findViewById(R.id.button_go_metro);
+        buttonGoMetro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RicercaMezzi ricercaMezzi = new RicercaMezzi();
-                ricercaMezzi.listaMezzi(parseInt(buttonGoMeto.getTag().toString()));
-                Log.d("ciao",ricercaMezzi.toString());
                 Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                intent.putExtra("Bottone",parseInt(buttonGoMetro.getTag().toString()) );
                 startActivity(intent);
             }
         });
@@ -55,10 +51,8 @@ public class MainActivity extends Activity {
         buttonGoAutobus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RicercaMezzi ricercaMezzi = new RicercaMezzi();
-                ricercaMezzi.listaMezzi(parseInt(buttonGoAutobus.getTag().toString()));
-                Log.d("ciao",ricercaMezzi.toString());
                 Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                intent.putExtra("Bottone",parseInt(buttonGoAutobus.getTag().toString()) );
                 startActivity(intent);
             }
         });
@@ -66,10 +60,8 @@ public class MainActivity extends Activity {
         buttonGoTreno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RicercaMezzi ricercaMezzi = new RicercaMezzi();
-                ricercaMezzi.listaMezzi(parseInt(buttonGoTreno.getTag().toString()));
-                Log.d("ciao",ricercaMezzi.toString());
                 Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                intent.putExtra("Bottone",parseInt(buttonGoTreno.getTag().toString()) );
                 startActivity(intent);
             }
         });

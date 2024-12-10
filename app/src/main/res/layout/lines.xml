@@ -47,14 +47,10 @@
     </LinearLayout>
 
     <!-- Grid Layout for Main Lines -->
-    <GridView
+    <ListView
+        android:id="@+id/listaMezzi"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="61"
-        android:numColumns="5"
-        android:padding="16dp">
-
-    </GridView>
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/button_go_to_main"
