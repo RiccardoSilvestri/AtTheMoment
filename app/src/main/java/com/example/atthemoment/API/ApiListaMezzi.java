@@ -13,6 +13,22 @@ public class ApiListaMezzi {
         this.tipologia = tipologia;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public String getLineDescription() {
+        return lineDescription;
+    }
+
+    public int getTipologia() {
+        return tipologia;
+    }
+
     @Override
     public String toString() {
         return "ApiListaMezzi{" +
