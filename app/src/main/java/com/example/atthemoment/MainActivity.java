@@ -25,6 +25,8 @@ public class MainActivity extends Activity {
             }
         });
         LinearLayout buttonLines = findViewById(R.id.button_go_lines);
+        //buttonLines.getTag();
+        //buttonLines.setOnClickListener();
         buttonLines.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
