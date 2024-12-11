@@ -2,7 +2,7 @@ package it.rizzoli.atthemoment.controller;
 import android.util.Log;
 import it.rizzoli.atthemoment.API.ApiListaMezzi;
 import it.rizzoli.atthemoment.model.JourneyPatterns;
-import it.rizzoli.atthemoment.model.ListaMezzi;
+import it.rizzoli.atthemoment.model.principali.ListaMezzi;
 import it.rizzoli.atthemoment.service.CallAtm;
 import java.util.ArrayList;
 import java.util.List;

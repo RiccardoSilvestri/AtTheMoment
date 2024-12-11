@@ -1,7 +1,11 @@
-package it.rizzoli.atthemoment.model;
+package it.rizzoli.atthemoment.model.principali;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
+
+import it.rizzoli.atthemoment.model.Line;
+import it.rizzoli.atthemoment.model.Link;
+import it.rizzoli.atthemoment.model.Stop;
 
 public class ListaMezzi {
     @SerializedName("Id")

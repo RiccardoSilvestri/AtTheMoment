@@ -1,22 +1,48 @@
-package it.rizzoli.atthemoment.model;
+package it.rizzoli.atthemoment.model.principali;
+
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
-public class StopInfo {
-    private String code;
-    private String description;
-    private Location location;
-    private String customerCode;
-    private String municipality;
-    private String address;
-    private String telephone;
-    private String fax;
-    private String siteUrl;
-    private String email;
-    private Category category;
-    private Object details;
-    private Object dynamicFirstLevel;
-    private List<LineInfo> lines;
+import it.rizzoli.atthemoment.model.Category;
+import it.rizzoli.atthemoment.model.LineInfo;
+import it.rizzoli.atthemoment.model.Link;
+import it.rizzoli.atthemoment.model.Location;
 
+public class Fermata {
+    @SerializedName("Code")
+    private String code;
+    @SerializedName("Description")
+    private String description;
+    @SerializedName("Location")
+    private Location location;
+    @SerializedName("CustomerCode")
+    private String customerCode;
+    @SerializedName("Municipality")
+    private String municipality;
+    @SerializedName("Address")
+    private String address;
+    @SerializedName("Telephone")
+    private String telephone;
+    @SerializedName("Fax")
+    private String fax;
+    @SerializedName("SiteUrl")
+    private String siteUrl;
+    @SerializedName("Email")
+    private String email;
+    @SerializedName("Category")
+    private Category category;
+    @SerializedName("Details")
+    private Object details;
+    @SerializedName("Dynamic_First_Level")
+    private Object dynamicFirstLevel;
+    @SerializedName("Lines")
+    private List<LineInfo> lines;
+    private Boolean pointAccessible;
+    private Object pointStopPath;
+    private Object pointStopStatus;
+    private Object pointStopInfo;
+    private List<Link> links;
 
     public String getCode() {
         return code;
@@ -130,5 +156,44 @@ public class StopInfo {
         this.lines = lines;
     }
 
+    public Boolean getPointAccessible() {
+        return pointAccessible;
+    }
+
+    public void setPointAccessible(Boolean pointAccessible) {
+        this.pointAccessible = pointAccessible;
+    }
+
+    public Object getPointStopPath() {
+        return pointStopPath;
+    }
+
+    public void setPointStopPath(Object pointStopPath) {
+        this.pointStopPath = pointStopPath;
+    }
+
+    public Object getPointStopStatus() {
+        return pointStopStatus;
+    }
+
+    public void setPointStopStatus(Object pointStopStatus) {
+        this.pointStopStatus = pointStopStatus;
+    }
+
+    public Object getPointStopInfo() {
+        return pointStopInfo;
+    }
+
+    public void setPointStopInfo(Object pointStopInfo) {
+        this.pointStopInfo = pointStopInfo;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
 
 }

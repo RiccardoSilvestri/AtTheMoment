@@ -3,6 +3,8 @@ package it.rizzoli.atthemoment.model;
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
+import it.rizzoli.atthemoment.model.principali.ListaMezzi;
+
 public class JourneyPatterns {
     @SerializedName("JourneyPatterns")
     private List<ListaMezzi> journeyPatterns;
