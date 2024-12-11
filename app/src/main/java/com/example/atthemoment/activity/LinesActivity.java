@@ -18,7 +18,7 @@ public class LinesActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.lines);
+        setContentView(R.layout.activity_lines);
 
         Intent intent = getIntent();
         int bottone = intent.getIntExtra("Bottone", -1);

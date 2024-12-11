@@ -19,7 +19,7 @@ public class MapActivity extends android.app.Activity {
         super.onCreate(savedInstance);
         Configuration.getInstance().load(getApplicationContext(),
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-        setContentView(R.layout.map_activity);
+        setContentView(R.layout.activity_map);
         mapView = findViewById(R.id.mapView);
         mapView.setTileSource(TileSourceFactory.MAPNIK);
         mapView.setBuiltInZoomControls(true);
