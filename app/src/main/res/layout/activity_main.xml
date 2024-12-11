@@ -7,7 +7,7 @@
     android:weightSum="100"
     android:orientation="vertical"
     android:background="@drawable/gradient_background_page1"
-    tools:context=".activity.MainActivity">
+    tools:context="it.rizzoli.atthemoment.activity.MainActivity">
 
     <!-- Header -->
     <LinearLayout
