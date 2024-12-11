@@ -48,11 +48,13 @@ public class InfoLineActivity extends Activity {
         ricercaInfoMezzo.infoMezzo(idMezzo,andataRitornoSwitch, infoMezzoList -> {
             runOnUiThread(() -> {
                 ArrayList<String> fermateArray = new ArrayList<>();
+                ArrayList<String> fermateArrayCodice = new ArrayList<>();
 
                 ApiMezzo apiMezzo = infoMezzoList.get(0);
 
                 for (Stop stop : apiMezzo.getStops()) {
                     fermateArray.add(stop.getDescription());
+                    fermateArrayCodice.add(stop.getCode());
                 }
 
                 ArrayAdapter<String> fermateAdapter = new ArrayAdapter<>(
@@ -62,6 +64,14 @@ public class InfoLineActivity extends Activity {
                 );
 
                 listViewStops.setAdapter(fermateAdapter);
+                listViewStops.setOnItemClickListener((adapterView, view, position, id) -> {
+                    String clickedItem = fermateArrayCodice.get(position);
+                    System.out.println("Clicked item: " + clickedItem);
+
+                    Intent intent2 = new Intent(InfoLineActivity.this, StopActivity.class);
+                    intent2.putExtra("Fermata", (clickedItem));
+                    startActivity(intent2);
+                });
             });
         });
 

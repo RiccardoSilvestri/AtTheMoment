@@ -8,42 +8,6 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <RadioGroup
-            android:id="@+id/andataRitornoRadioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:checkedButton="@id/radioAndata"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radioAndata"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Andata"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <RadioButton
-                android:id="@+id/radioRitorno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ritorno"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="20"
         android:background="@color/black"
@@ -82,10 +46,26 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/lista"
+    <TextView
+        android:id="@+id/description"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Via"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/bookinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/waitingmessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0 min"
+        android:textSize="34sp" />
 
     <Button
         android:id="@+id/button_go_to_main"

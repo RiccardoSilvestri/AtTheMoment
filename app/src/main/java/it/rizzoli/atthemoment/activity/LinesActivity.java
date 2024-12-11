@@ -1,15 +1,10 @@
 package it.rizzoli.atthemoment.activity;
-
-import static java.lang.Integer.parseInt;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Switch;
 
 import com.example.atthemoment.R;
 import it.rizzoli.atthemoment.controller.RicercaMezzi;
@@ -48,7 +43,6 @@ public class LinesActivity extends Activity {
                             mezziArray
                     );
                     listView.setAdapter(listaMezziAdapter);
-
                     listView.setOnItemClickListener((adapterView, view, position, id) -> {
                         String clickedItem = mezziArray.get(position);
                         System.out.println("Clicked item: " + clickedItem);
@@ -57,7 +51,6 @@ public class LinesActivity extends Activity {
                         intent2.putExtra("Mezzo", (clickedItem));
                         startActivity(intent2);
                     });
-
             });
 
             buttonGoToMain.setOnClickListener(v -> {

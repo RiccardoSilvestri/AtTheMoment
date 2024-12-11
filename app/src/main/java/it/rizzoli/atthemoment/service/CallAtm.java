@@ -12,7 +12,7 @@ public class CallAtm {
         String link = "https://giromilano.atm.it/proxy.tpportal/api/tpportal/tpl/journeyPatterns/"+numero+"%7C"+rotta+"?alternativeRoutesMode=false";
         return fetchCall(link);
     }
-    public InputStreamReader infoFermata(String numero) throws IOException {
+    public static InputStreamReader infoFermata(String numero) throws IOException {
         String link = "https://giromilano.atm.it/proxy.tpportal/api/tpportal/geodata/pois/stops/"+numero;
         return fetchCall(link);
     }
