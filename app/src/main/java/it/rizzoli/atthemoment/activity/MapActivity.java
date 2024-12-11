@@ -25,7 +25,6 @@ public class MapActivity extends android.app.Activity {
         mapView.setBuiltInZoomControls(true);
         mapView.setMultiTouchControls(true);
 
-        // Imposta un punto centrale
         mapView.getController().setZoom(22);
         mapView.getController().setCenter(new GeoPoint(45.483294580054626,9.237441130916924));
 

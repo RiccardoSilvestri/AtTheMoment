@@ -3,9 +3,12 @@ package it.rizzoli.atthemoment.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.atthemoment.R;
 import it.rizzoli.atthemoment.controller.RicercaMezzi;
@@ -40,12 +43,15 @@ public class LinesActivity extends Activity {
                         mezziArray
                 );
                 listView.setAdapter(listaMezziAdapter);
+                listView.setOnItemClickListener((adapterView, view, position, id) -> {
+                    System.out.println(view.getId()); //non funziona corretamente TODO: rivedere la logica
+                });
             });
-        });
 
-        buttonGoToMain.setOnClickListener(v -> {
-            Intent mainIntent = new Intent(LinesActivity.this, MainActivity.class);
-            startActivity(mainIntent);
+            buttonGoToMain.setOnClickListener(v -> {
+                Intent mainIntent = new Intent(LinesActivity.this, MainActivity.class);
+                startActivity(mainIntent);
+            });
         });
     }
 }
