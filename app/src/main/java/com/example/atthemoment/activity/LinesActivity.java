@@ -1,19 +1,17 @@
-package com.example.atthemoment;
+package com.example.atthemoment.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.atthemoment.R;
 import com.example.atthemoment.controller.RicercaMezzi;
 import com.example.atthemoment.API.ApiListaMezzi;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LinesActivity extends Activity {
 

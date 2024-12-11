@@ -1,4 +1,4 @@
-package com.example.atthemoment;
+package com.example.atthemoment.junk;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;

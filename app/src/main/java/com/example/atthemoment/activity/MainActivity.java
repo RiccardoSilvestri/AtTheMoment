@@ -1,18 +1,17 @@
-package com.example.atthemoment;
+package com.example.atthemoment.activity;
 
 import static java.lang.Integer.parseInt;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.example.atthemoment.controller.RicercaMezzi;
+import com.example.atthemoment.R;
 
 public class MainActivity extends Activity {
 

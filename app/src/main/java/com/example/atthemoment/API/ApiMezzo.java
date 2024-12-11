@@ -1,6 +1,6 @@
 package com.example.atthemoment.API;
-import com.example.atthemoment.Mezzo;
-import com.example.atthemoment.Mezzo.Stop;
+import com.example.atthemoment.junk.Mezzo;
+import com.example.atthemoment.junk.Mezzo.Stop;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.atthemoment;
+package com.example.atthemoment.junk;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,14 +6,13 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.atthemoment.R;
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.stream.Collectors;
 import java.util.zip.GZIPInputStream;
 
 public class SecondActivity extends Activity {

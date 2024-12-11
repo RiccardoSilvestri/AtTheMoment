@@ -1,6 +1,9 @@
-package com.example.atthemoment;
+package com.example.atthemoment.activity;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
+import com.example.atthemoment.R;
+
 import org.osmdroid.config.Configuration;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
