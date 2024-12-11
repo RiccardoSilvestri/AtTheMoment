@@ -31,16 +31,20 @@ public class LinesActivity extends Activity {
         ricercaMezzi.listaMezzi(bottone, mezziList -> {
             runOnUiThread(() -> {
                     ArrayList<String> mezziArray = new ArrayList<>();
+                    ArrayList<String> mezziArrayNomi = new ArrayList<>();
+
                     for (ApiListaMezzi mezzo : mezziList) {
                         if (mezzo.getDirection().equals("0")) {
                             mezziArray.add(mezzo.getCode());
+                            mezziArrayNomi.add(mezzo.getLineDescription());
+
                         }
                     }
 
                     ArrayAdapter<String> listaMezziAdapter = new ArrayAdapter<>(
                             LinesActivity.this,
                             android.R.layout.simple_expandable_list_item_1,
-                            mezziArray
+                            mezziArrayNomi
                     );
                     listView.setAdapter(listaMezziAdapter);
                     listView.setOnItemClickListener((adapterView, view, position, id) -> {
