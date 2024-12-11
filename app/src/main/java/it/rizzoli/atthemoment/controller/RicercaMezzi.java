@@ -1,9 +1,11 @@
 package it.rizzoli.atthemoment.controller;
+
 import android.util.Log;
 import it.rizzoli.atthemoment.API.ApiListaMezzi;
 import it.rizzoli.atthemoment.model.JourneyPatterns;
 import it.rizzoli.atthemoment.model.principali.ListaMezzi;
 import it.rizzoli.atthemoment.service.CallAtm;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -18,15 +20,20 @@ public class RicercaMezzi {
         this.executorService = Executors.newSingleThreadExecutor();
     }
 
-
     public void listaMezzi(int input, Consumer<List<ApiListaMezzi>> callback) {
         executorService.execute(() -> {
             try {
                 Log.d("RicercaMezzi", "Input ricevuto: " + input);
+
                 JourneyPatterns journeyPatterns = CallAtm.fixGzipResponse(
                         CallAtm.listaMezzi(),
                         JourneyPatterns.class
                 );
+                if (journeyPatterns == null || journeyPatterns.getJourneyPatterns() == null) {
+                    Log.e("RicercaMezzi", "Risposta vuota o malformata.");
+                    callback.accept(new ArrayList<>());
+                    return;
+                }
 
                 List<ListaMezzi> listaMezzi = journeyPatterns.getJourneyPatterns();
                 List<ApiListaMezzi> apiListaMezzi = new ArrayList<>();
@@ -51,6 +58,7 @@ public class RicercaMezzi {
             }
         });
     }
+
     public void shutdown() {
         executorService.shutdown();
         Log.d("RicercaMezzi", "ExecutorService terminato.");

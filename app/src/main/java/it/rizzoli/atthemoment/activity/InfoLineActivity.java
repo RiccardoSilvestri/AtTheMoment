@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.atthemoment.R;
 
@@ -26,10 +27,11 @@ public class InfoLineActivity extends Activity {
         setContentView(R.layout.activity_transport);
         andataRitornoRadioGroup = findViewById(R.id.andataRitornoRadioGroup);
         listaFermate();
-        andataRitornoRadioGroup.setOnCheckedChangeListener((x,y)-> listaFermate());
+        andataRitornoRadioGroup.setOnCheckedChangeListener((x, y) -> listaFermate());
         //FA CAGARE MA FUNZIONA
     }
-    private void listaFermate(){
+
+    private void listaFermate() {
         int andataRitornoSwitch = 0;
         int selectedId = andataRitornoRadioGroup.getCheckedRadioButtonId();
         if (selectedId == R.id.radioAndata) {
@@ -40,13 +42,22 @@ public class InfoLineActivity extends Activity {
 
         Intent intent = getIntent();
         String idMezzo = intent.getStringExtra("Mezzo");
-
         ListView listViewStops = findViewById(R.id.lista);
+        tentaCaricamentoFermate(listViewStops, idMezzo, andataRitornoSwitch);
+    }
 
+    private void tentaCaricamentoFermate(ListView listViewStops, String idMezzo, int andataRitornoSwitch) {
         RicercaInfoMezzo ricercaInfoMezzo = new RicercaInfoMezzo();
 
-        ricercaInfoMezzo.infoMezzo(idMezzo,andataRitornoSwitch, infoMezzoList -> {
+        ricercaInfoMezzo.infoMezzo(idMezzo, andataRitornoSwitch, infoMezzoList -> {
             runOnUiThread(() -> {
+                if (infoMezzoList == null || infoMezzoList.isEmpty()) {
+                    Log.e("InfoLineActivity", "Lista fermate vuota o null. Riprovo...");
+                    listViewStops.postDelayed(() -> tentaCaricamentoFermate(listViewStops, idMezzo, andataRitornoSwitch), 2000);
+                    return;
+                }
+
+
                 ArrayList<String> fermateArray = new ArrayList<>();
                 ArrayList<String> fermateArrayCodice = new ArrayList<>();
 
@@ -69,12 +80,12 @@ public class InfoLineActivity extends Activity {
                     System.out.println("Clicked item: " + clickedItem);
 
                     Intent intent2 = new Intent(InfoLineActivity.this, StopActivity.class);
-                    intent2.putExtra("Fermata", (clickedItem));
+                    intent2.putExtra("Fermata", clickedItem);
                     startActivity(intent2);
                 });
+
+                Log.i("InfoLineActivity", "Fermate caricate con successo.");
             });
         });
-
-        Log.d("InfoLineActivity", "Mezzo selezionato: " + idMezzo);
     }
 }

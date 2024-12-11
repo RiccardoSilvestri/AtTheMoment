@@ -1,7 +1,6 @@
 package it.rizzoli.atthemoment.controller;
 
 import android.util.Log;
-import it.rizzoli.atthemoment.API.ApiListaMezzi;
 import it.rizzoli.atthemoment.API.ApiMezzo;
 import it.rizzoli.atthemoment.model.Stop;
 import it.rizzoli.atthemoment.model.principali.Mezzo;
@@ -22,14 +21,19 @@ public class RicercaInfoMezzo {
         this.executorService = Executors.newSingleThreadExecutor();
     }
 
-    public void infoMezzo(String input,int direzione, Consumer<List<ApiMezzo>> callback) {
+    public void infoMezzo(String input, int direzione, Consumer<List<ApiMezzo>> callback) {
         executorService.execute(() -> {
             try {
                 Log.d("RicercaInfoMezzo", "Input ricevuto: " + input);
 
                 Mezzo mezzo = CallAtm.fixGzipResponse(CallAtm.infoMezzo(input, direzione), Mezzo.class);
-                List<Stop> stops = mezzo.getStops();
+                if (mezzo == null || mezzo.getStops() == null) {
+                    Log.e("RicercaInfoMezzo", "Risposta vuota o malformata.");
+                    callback.accept(new ArrayList<>());
+                    return;
+                }
 
+                List<Stop> stops = mezzo.getStops();
                 ApiMezzo apiMezzo = new ApiMezzo(mezzo.getCode(), mezzo.getLine().getLineDescription(), mezzo.getLine().getTransportMode(), stops);
 
                 List<ApiMezzo> apiMezzi = new ArrayList<>();
@@ -39,7 +43,6 @@ public class RicercaInfoMezzo {
 
             } catch (IOException e) {
                 Log.e("RicercaInfoMezzo", "Errore nel recuperare le informazioni del mezzo.", e);
-
                 callback.accept(new ArrayList<>());
             }
         });

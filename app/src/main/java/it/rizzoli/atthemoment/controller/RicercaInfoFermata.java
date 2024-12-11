@@ -20,17 +20,24 @@ public class RicercaInfoFermata {
     public RicercaInfoFermata() {
         this.executorService = Executors.newSingleThreadExecutor();
     }
+
     public void infoFermata(String input, Consumer<List<ApiFermata>> callback) {
         executorService.execute(() -> {
             try {
-                Log.d("RicercaInfoMezzo", "Input ricevuto: " + input);
+                Log.d("RicercaInfoFermata", "Input ricevuto: " + input);
 
                 Fermata fermata = CallAtm.fixGzipResponse(CallAtm.infoFermata(input), Fermata.class);
+                if (fermata == null || fermata.getLines() == null) {
+                    Log.e("RicercaInfoFermata", "Risposta vuota o malformata.");
+                    callback.accept(new ArrayList<>());
+                    return;
+                }
+
                 List<ApiFermata> apiFermata = new ArrayList<>();
-                for (LineInfo lineinfo :fermata.getLines()){
-                    String waitingMessage= lineinfo.getWaitMessage();
-                    String bookInfo= lineinfo.getBookletUrl2();
-                    apiFermata.add(new ApiFermata(fermata.getDescription(),bookInfo,waitingMessage,fermata.getLocation().getX(),fermata.getLocation().getY()));
+                for (LineInfo lineinfo : fermata.getLines()) {
+                    String waitingMessage = lineinfo.getWaitMessage();
+                    String bookInfo = lineinfo.getBookletUrl2();
+                    apiFermata.add(new ApiFermata(fermata.getDescription(), bookInfo, waitingMessage, fermata.getLocation().getX(), fermata.getLocation().getY()));
                 }
                 callback.accept(apiFermata);
 
