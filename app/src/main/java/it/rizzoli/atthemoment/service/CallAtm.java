@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.zip.GZIPInputStream;
 
 public class CallAtm {
-    public InputStreamReader infoMezzo(String numero,int rotta) throws IOException {
+    public static InputStreamReader infoMezzo(String numero, int rotta) throws IOException {
         String link = "https://giromilano.atm.it/proxy.tpportal/api/tpportal/tpl/journeyPatterns/"+numero+"%7C"+rotta+"?alternativeRoutesMode=false";
         return fetchCall(link);
     }

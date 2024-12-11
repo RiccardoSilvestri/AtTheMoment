@@ -48,7 +48,7 @@
 
     <!-- Grid Layout for Main Lines -->
     <ListView
-        android:id="@+id/listaMezzi"
+        android:id="@+id/lista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

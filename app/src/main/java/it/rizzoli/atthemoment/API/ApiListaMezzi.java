@@ -5,7 +5,6 @@ public class ApiListaMezzi {
     private String direction;
     private String lineDescription;
     private int tipologia;
-
     public ApiListaMezzi(String code, String direction, String lineDescription, int tipologia) {
         this.code = code;
         this.direction = direction;

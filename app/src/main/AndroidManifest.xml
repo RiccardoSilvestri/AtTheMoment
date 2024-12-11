@@ -37,6 +37,7 @@
             android:name="it.rizzoli.atthemoment.activity.LinesActivity"
             android:exported="true">
         </activity>
+        <activity android:name="it.rizzoli.atthemoment.activity.InfoLineActivity" />
 </application>
 
 </manifest>

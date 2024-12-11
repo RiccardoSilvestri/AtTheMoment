@@ -1,14 +1,14 @@
 package it.rizzoli.atthemoment.API;
-import it.rizzoli.atthemoment.junk.Mezzo;
-import it.rizzoli.atthemoment.junk.Mezzo.Stop;
-
 import java.util.List;
+
+import it.rizzoli.atthemoment.model.principali.Mezzo;
+import it.rizzoli.atthemoment.model.Stop;
 
 public class ApiMezzo {
     private String code;
     private String lineDescription;
     private Integer direction;
-    private List<Mezzo.Stop> stops;
+    private List<Stop> stops;
 
     public ApiMezzo(String code, String lineDescription, Integer direction, List<Stop> stops) {
         this.code = code;
