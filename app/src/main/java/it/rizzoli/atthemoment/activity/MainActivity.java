@@ -10,14 +10,23 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.atthemoment.R;
 
-public class MainActivity extends Activity {
+
+
+
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction() .add(R.id.container_tab_bar, new FragTabBar()).commit();
+        }
 
         Button button = findViewById(R.id.button_go_to_second);
         button.setOnClickListener(new View.OnClickListener() {
@@ -27,6 +36,31 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+
+        View.OnClickListener buttonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+                intent.putExtra("Bottone", Integer.parseInt(v.getTag().toString()));
+                startActivity(intent);
+            }
+        };
+
+        LinearLayout buttonGoTram = findViewById(R.id.button_go_tram);
+        buttonGoTram.setOnClickListener(buttonClickListener);
+
+        LinearLayout buttonGoMetro = findViewById(R.id.button_go_metro);
+        buttonGoMetro.setOnClickListener(buttonClickListener);
+
+        LinearLayout buttonGoBus = findViewById(R.id.button_go_autobus);
+        buttonGoBus.setOnClickListener(buttonClickListener);
+
+        LinearLayout buttonGoTreno = findViewById(R.id.button_go_treno);
+        buttonGoTreno.setOnClickListener(buttonClickListener);
+
+        //OLD CODE
+        /*
         LinearLayout buttonGoTram = findViewById(R.id.button_go_tram);
         buttonGoTram.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +97,8 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+         */
 
     }
 

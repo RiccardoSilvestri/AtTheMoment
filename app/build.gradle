@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    implementation libs.appcompat.v131
+    implementation libs.fragment
     implementation libs.gson
     implementation libs.osmdroid.android
     implementation libs.appcompat
