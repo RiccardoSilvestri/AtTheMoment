@@ -46,7 +46,29 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <!-- Grid Layout for Main Lines -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#E0E0E0"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:queryHint="Cerca..."
+            android:iconifiedByDefault="false">
+        </SearchView>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/lista"
         android:layout_width="match_parent"
@@ -62,10 +84,7 @@
         android:padding="12dp"
         android:text="← Torna Indietro"
         android:textSize="16sp" />
-    <!-- Back Button -->
 
-
-    <!-- NavBar Start -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -84,7 +103,6 @@
             android:paddingRight="20dp"
             android:paddingBottom="10dp">
 
-            <!-- Button Train Start -->
             <FrameLayout
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -105,9 +123,7 @@
                     android:background="@android:color/transparent"
                     android:onClick="TestClick" />
             </FrameLayout>
-            <!-- Button Train End -->
 
-            <!-- Button Tram Start -->
             <FrameLayout
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -128,9 +144,6 @@
                     android:background="@android:color/transparent"
                     android:onClick="TestClick" />
             </FrameLayout>
-            <!-- Button Tram End -->
-
-            <!-- Button Metro Start -->
             <FrameLayout
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -151,9 +164,6 @@
                     android:background="@android:color/transparent"
                     android:onClick="TestClick" />
             </FrameLayout>
-            <!-- Button Metro End -->
-
-            <!-- Button Bus Start -->
             <FrameLayout
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -175,9 +185,6 @@
 
                     android:onClick="TestClick" />
             </FrameLayout>
-            <!-- Button Bus End -->
-
         </LinearLayout>
     </RelativeLayout>
-    <!-- NavBar End -->
 </LinearLayout>

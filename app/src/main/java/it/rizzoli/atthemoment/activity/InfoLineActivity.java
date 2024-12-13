@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
-import android.widget.Toast;
+import android.widget.SearchView;
 
 import com.example.atthemoment.R;
 
@@ -19,16 +20,18 @@ import it.rizzoli.atthemoment.model.Stop;
 
 public class InfoLineActivity extends Activity {
     RadioGroup andataRitornoRadioGroup;
-
+    SearchView searchView;
+    ArrayAdapter<String> fermateAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport);
+
         andataRitornoRadioGroup = findViewById(R.id.andataRitornoRadioGroup);
+        searchView = findViewById(R.id.searchView);
         listaFermate();
         andataRitornoRadioGroup.setOnCheckedChangeListener((x, y) -> listaFermate());
-        //FA CAGARE MA FUNZIONA
     }
 
     private void listaFermate() {
@@ -57,7 +60,6 @@ public class InfoLineActivity extends Activity {
                     return;
                 }
 
-
                 ArrayList<String> fermateArray = new ArrayList<>();
                 ArrayList<String> fermateArrayCodice = new ArrayList<>();
 
@@ -68,7 +70,7 @@ public class InfoLineActivity extends Activity {
                     fermateArrayCodice.add(stop.getCode());
                 }
 
-                ArrayAdapter<String> fermateAdapter = new ArrayAdapter<>(
+                fermateAdapter = new ArrayAdapter<>(
                         InfoLineActivity.this,
                         android.R.layout.simple_list_item_1,
                         fermateArray
@@ -76,15 +78,33 @@ public class InfoLineActivity extends Activity {
 
                 listViewStops.setAdapter(fermateAdapter);
                 listViewStops.setOnItemClickListener((adapterView, view, position, id) -> {
-                    String clickedItem = fermateArrayCodice.get(position);
-                    System.out.println("Clicked item: " + clickedItem);
+                    String visibleName = fermateAdapter.getItem(position);
+                    int originalIndex = fermateArray.indexOf(visibleName);
+                    String selectedCode = fermateArrayCodice.get(originalIndex);
+
+                    System.out.println("Clicked item: " + selectedCode);
 
                     Intent intent2 = new Intent(InfoLineActivity.this, StopActivity.class);
-                    intent2.putExtra("Fermata", clickedItem);
+                    intent2.putExtra("Fermata", selectedCode);
                     startActivity(intent2);
                 });
 
                 Log.i("InfoLineActivity", "Fermate caricate con successo.");
+            });
+
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    if (fermateAdapter != null) {
+                        fermateAdapter.getFilter().filter(newText);
+                    }
+                    return true;
+                }
             });
         });
     }
