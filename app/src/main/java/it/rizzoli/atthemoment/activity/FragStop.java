@@ -24,7 +24,7 @@ public class FragStop extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_listview_lines, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_stop_info, container, false);
 
         descriptionTextView = rootView.findViewById(R.id.description);
         bookInfoTextView = rootView.findViewById(R.id.bookinfo);

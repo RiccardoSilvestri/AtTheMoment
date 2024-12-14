@@ -23,6 +23,7 @@ public class InfoLineActivity extends Activity {
     SearchView searchView;
     ArrayAdapter<String> fermateAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,28 +61,32 @@ public class InfoLineActivity extends Activity {
                     return;
                 }
 
-                ArrayList<String> fermateArray = new ArrayList<>();
-                ArrayList<String> fermateArrayCodice = new ArrayList<>();
+                ArrayList<Stop> fermateArray = new ArrayList<>();
+                ArrayList<Stop> fermateArrayCodice = new ArrayList<>();
 
                 ApiMezzo apiMezzo = infoMezzoList.get(0);
 
                 for (Stop stop : apiMezzo.getStops()) {
-                    fermateArray.add(stop.getDescription());
-                    fermateArrayCodice.add(stop.getCode());
+                    fermateArray.add(stop);
+                    fermateArrayCodice.add(stop);
                 }
 
-                fermateAdapter = new ArrayAdapter<>(
+                StopAdapter stopAdapter = new StopAdapter(
                         InfoLineActivity.this,
-                        android.R.layout.simple_list_item_1,
+                        /*android.R.layout.simple_list_item_1,*/
                         fermateArray
                 );
 
-                listViewStops.setAdapter(fermateAdapter);
+                listViewStops.setAdapter(stopAdapter);
                 listViewStops.setOnItemClickListener((adapterView, view, position, id) -> {
-                    String visibleName = fermateAdapter.getItem(position);
+
+                    Stop selectedStop = (Stop) stopAdapter.getItem(position);
+                    String selectedCode = selectedStop.getCode();
+                    /*
+                    String visibleName = stopAdapter.getItem(position);
                     int originalIndex = fermateArray.indexOf(visibleName);
                     String selectedCode = fermateArrayCodice.get(originalIndex);
-
+                    */
                     System.out.println("Clicked item: " + selectedCode);
 
                     Intent intent2 = new Intent(InfoLineActivity.this, StopActivity.class);
@@ -90,6 +95,8 @@ public class InfoLineActivity extends Activity {
                 });
 
                 Log.i("InfoLineActivity", "Fermate caricate con successo.");
+
+
             });
 
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
