@@ -1,16 +1,18 @@
 package it.rizzoli.atthemoment.activity;
-import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.atthemoment.R;
 import it.rizzoli.atthemoment.API.ApiFermata;
 import it.rizzoli.atthemoment.controller.RicercaInfoFermata;
 
-import android.os.Handler;
-
-public class StopActivity extends Activity {
+public class StopActivity extends AppCompatActivity {
 
     private TextView descriptionTextView;
     private TextView bookInfoTextView;
@@ -23,10 +25,6 @@ public class StopActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop);
 
-        descriptionTextView = findViewById(R.id.description);
-        bookInfoTextView = findViewById(R.id.bookinfo);
-        waitingMessageTextView = findViewById(R.id.waitingmessage);
-
         Intent intent = getIntent();
         String input = intent.getStringExtra("Fermata");
 
@@ -35,10 +33,17 @@ public class StopActivity extends Activity {
             public void run() {
                 infoFermata(input);
                 handler.postDelayed(this, 10000);
-                Log.d("StopActivity", "Task periodico eseguito");
+                Log.d("StopActivity", "Periodic task executed");
             }
         };
         handler.post(updateTask);
+
+        if (savedInstanceState == null) {
+            FragStop fragStop = new FragStop();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container_stop_view, fragStop)
+                    .commit();
+        }
     }
 
     private void infoFermata(String input) {
@@ -46,17 +51,47 @@ public class StopActivity extends Activity {
 
         ricercaInfoFermata.infoFermata(input, infofermataList -> {
             runOnUiThread(() -> {
+                Bundle bundle = new Bundle();
                 if (infofermataList != null && !infofermataList.isEmpty()) {
                     ApiFermata apiFermata = infofermataList.get(0);
 
-                    descriptionTextView.setText(apiFermata.getDescription());
-                    bookInfoTextView.setText(apiFermata.getBookInfo());
-                    waitingMessageTextView.setText(apiFermata.getWaitingMessage());
+
+                    bundle.putString("descriptionTextView", apiFermata.getDescription());
+                    bundle.putString("bookInfoTextView", apiFermata.getBookInfo());
+                    bundle.putString("waitingMessageTextView", apiFermata.getWaitingMessage());
+/*
+                    FragStop fragStop = new FragStop();
+                    fragStop.setArguments(bundle);
+
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container_stop_view, fragStop)
+                            .commit();
+*/
                 } else {
+                    // Handle case where no information is found
                     descriptionTextView.setText("Informazioni non trovate");
                     bookInfoTextView.setText("Nessun dato disponibile");
                     waitingMessageTextView.setText("Attendi...");
+
+                    bundle.putString("descriptionTextView", "Informazioni non trovate");
+                    bundle.putString("bookInfoTextView", "Nessun dato disponibile");
+                    bundle.putString("waitingMessageTextView", "Attendi...");
+/*
+                    FragStop fragStop = new FragStop();
+                    fragStop.setArguments(bundle);
+
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.container_stop_view, fragStop)
+                            .commit();
+
+ */
                 }
+                FragStop fragStop = new FragStop();
+                fragStop.setArguments(bundle);
+
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container_stop_view, fragStop)
+                        .commit();
             });
         });
     }
