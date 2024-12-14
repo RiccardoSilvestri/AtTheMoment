@@ -59,32 +59,16 @@ public class StopActivity extends AppCompatActivity {
                     bundle.putString("descriptionTextView", apiFermata.getDescription());
                     bundle.putString("bookInfoTextView", apiFermata.getBookInfo());
                     bundle.putString("waitingMessageTextView", apiFermata.getWaitingMessage());
-/*
-                    FragStop fragStop = new FragStop();
-                    fragStop.setArguments(bundle);
 
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container_stop_view, fragStop)
-                            .commit();
-*/
                 } else {
-                    // Handle case where no information is found
-                    descriptionTextView.setText("Informazioni non trovate");
+                   descriptionTextView.setText("Informazioni non trovate");
                     bookInfoTextView.setText("Nessun dato disponibile");
                     waitingMessageTextView.setText("Attendi...");
 
                     bundle.putString("descriptionTextView", "Informazioni non trovate");
                     bundle.putString("bookInfoTextView", "Nessun dato disponibile");
                     bundle.putString("waitingMessageTextView", "Attendi...");
-/*
-                    FragStop fragStop = new FragStop();
-                    fragStop.setArguments(bundle);
 
-                    getSupportFragmentManager().beginTransaction()
-                            .replace(R.id.container_stop_view, fragStop)
-                            .commit();
-
- */
                 }
                 FragStop fragStop = new FragStop();
                 fragStop.setArguments(bundle);
@@ -94,6 +78,7 @@ public class StopActivity extends AppCompatActivity {
                         .commit();
             });
         });
+
     }
 
     @Override
