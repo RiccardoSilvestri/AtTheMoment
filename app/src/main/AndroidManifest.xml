@@ -41,6 +41,7 @@
         </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.StopActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
 
