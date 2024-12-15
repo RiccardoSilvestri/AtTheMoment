@@ -32,7 +32,7 @@ android:maxWidth="120dp"
         android:textStyle="bold"
 android:layout_toRightOf="@+id/item_code"
         android:textSize="20sp"
-        android:text="Waiting for signaasdasdasdasdasdl…."
+        android:text="Waiting for signal…"
         android:textColor="#3E3E3E"
         />
 </RelativeLayout>
