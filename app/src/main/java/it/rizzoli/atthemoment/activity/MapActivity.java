@@ -1,61 +1,73 @@
 package it.rizzoli.atthemoment.activity;
+
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.atthemoment.R;
-
+import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
-import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
-import org.osmdroid.util.GeoPoint;
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 
-public class MapActivity extends android.app.Activity {
-    private MapView mapView = null;
-
+public class MapActivity extends AppCompatActivity {
+    private MapView map;
     @Override
-    public void onCreate(Bundle savedInstance) {
-        super.onCreate(savedInstance);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         Configuration.getInstance().load(getApplicationContext(),
-                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
+                getPreferences(MODE_PRIVATE));
         setContentView(R.layout.activity_map);
-        mapView = findViewById(R.id.mapView);
-        mapView.setTileSource(TileSourceFactory.MAPNIK);
-        mapView.setBuiltInZoomControls(true);
-        mapView.setMultiTouchControls(true);
+        map = findViewById(com.example.atthemoment.R.id.mapView);
+        map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setMultiTouchControls(true);
+        IMapController mapController = map.getController();
+        mapController.setZoom(12.0);
 
-        mapView.getController().setZoom(22);
-        mapView.getController().setCenter(new GeoPoint(45.483294580054626,9.237441130916924));
+        GeoPoint milanCenter = new GeoPoint(45.4642, 9.1900);
+        mapController.setCenter(milanCenter);
+        addMarker(45.4642, 9.1900, "Milano", "Centro città");
 
-        GeoPoint startPoint = new GeoPoint(45.483294580054626, 9.237441130916924);
-        Marker startMarker = new Marker(mapView);
-        startMarker.setPosition(startPoint);
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        mapView.getOverlays().add(startMarker);
+    }
 
-        MyLocationNewOverlay locationOverlay = new MyLocationNewOverlay(mapView);
-        locationOverlay.enableMyLocation();
-        mapView.getOverlays().add(locationOverlay);
+    public void addMarker(double latitude, double longitude, String title, String snippet) {
+        GeoPoint point = new GeoPoint(latitude, longitude);
+        Marker marker = new Marker(map);
+        marker.setPosition(point);
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        marker.setTitle(title);
+        marker.setSnippet(snippet);
+
+        map.getOverlays().add(marker);
+        map.invalidate();
+    }
+
+    public void addMarkerWithIcon(double latitude, double longitude, String title,
+                                  String snippet, int iconResourceId) {
+        GeoPoint point = new GeoPoint(latitude, longitude);
+        Marker marker = new Marker(map);
+        marker.setPosition(point);
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        marker.setTitle(title);
+        marker.setSnippet(snippet);
+
+        Drawable icon = getResources().getDrawable(iconResourceId);
+        marker.setIcon(icon);
+
+        map.getOverlays().add(marker);
+        map.invalidate();
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
-        Configuration.getInstance().load(getApplicationContext(),
-                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-        if (mapView != null) {
-            mapView.onResume();
-        }
+        map.onResume();
     }
 
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
-        Configuration.getInstance().save(getApplicationContext(),
-                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()));
-        if (mapView != null) {
-            mapView.onPause();
-        }
+        map.onPause();
     }
 }

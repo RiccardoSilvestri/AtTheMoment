@@ -88,6 +88,11 @@
             android:textSize="20sp" />
     </LinearLayout>
 -->
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <Button
         android:id="@+id/button_go_to_main"
         android:layout_width="wrap_content"
