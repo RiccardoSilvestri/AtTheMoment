@@ -37,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container_tab_bar, new FragTabBar())
                     .commit();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container_header, new FragHeader())
+                    .commit();
         }
 
+        /*
         TextView subText = findViewById(R.id.subHeaderText);
         subText.post(() -> {
             subText.setTranslationX(getResources().getDisplayMetrics().widthPixels);
@@ -48,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
             animator.start();
             animator.setRepeatCount(ValueAnimator.INFINITE);
         });
+        */
+
+
 
         Button button = findViewById(R.id.button_go_to_second);
         button.setOnClickListener(v -> {
@@ -72,8 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout buttonGoTreno = findViewById(R.id.button_go_treno);
         buttonGoTreno.setOnClickListener(buttonClickListener);
-
+/*
         subHeaderText = findViewById(R.id.subHeaderText);
+
 
         new Thread(() -> {
             try {
@@ -101,10 +109,9 @@ public class MainActivity extends AppCompatActivity {
         } else {
             System.out.println("Nessuna notizia disponibile.");
         }
+
+         */
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
