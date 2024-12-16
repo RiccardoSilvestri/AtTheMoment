@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Button button = findViewById(R.id.button_go_to_second);
+        Button button = findViewById(R.id.button_go_to_news);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MapActivity.class);
+            Intent intent = new Intent(MainActivity.this, NewsActivity.class);
             startActivity(intent);
         });
 
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         buttonGoTreno.setOnClickListener(buttonClickListener);
 /*
         subHeaderText = findViewById(R.id.subHeaderText);
-
 
         new Thread(() -> {
             try {
