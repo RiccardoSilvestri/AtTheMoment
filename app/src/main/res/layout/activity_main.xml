@@ -36,17 +36,10 @@
             android:paddingBottom="10dp"
             android:text="Informazioni recenti"
             android:textColor="#E0E0E0"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:maxLines="1" />
 
-        <TextView
-            android:id="@+id/subHeaderText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingBottom="10dp"
-            android:text="Informazioni recenti"
-            android:textColor="#E0E0E0"
-            android:textSize="16sp" />
     </LinearLayout>
 
     <GridLayout

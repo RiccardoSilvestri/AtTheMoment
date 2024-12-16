@@ -1,11 +1,17 @@
 package it.rizzoli.atthemoment.service;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.zip.GZIPInputStream;
+
+import it.rizzoli.atthemoment.model.principali.News;
 
 public class CallAtm {
     public static InputStreamReader infoMezzo(String numero, int rotta) throws IOException {
@@ -18,6 +24,11 @@ public class CallAtm {
     }
     public static InputStreamReader listaMezzi() throws IOException{
         String link = "https://giromilano.atm.it/proxy.tpportal/api/tpPortal/tpl/journeyPatterns";
+        return fetchCall(link);
+    }
+
+    public static InputStreamReader news() throws IOException{
+        String link = "https://giromilano.atm.it/proxy.tpportal/api/tpPortal/tpl/atm/it";
         return fetchCall(link);
     }
 
@@ -45,5 +56,11 @@ public class CallAtm {
     public static <T> T fixGzipResponse(InputStreamReader response, Class<T> clazz) {
         Gson gson = new Gson();
         return gson.fromJson(response, clazz);
+        }
+
+    public static List<News> newsFixGzipResponse(InputStreamReader response) {
+        Gson gson = new Gson();
+        Type listType = new TypeToken<List<News>>(){}.getType();
+        return gson.fromJson(response, listType);
     }
 }
