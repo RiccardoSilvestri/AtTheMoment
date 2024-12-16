@@ -32,7 +32,8 @@
     </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.NewsActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.LinesActivity"
