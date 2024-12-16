@@ -30,6 +30,7 @@
             android:paddingBottom="10dp"
             android:text="Informazioni recenti"
             android:textColor="#E0E0E0"
+            android:maxLines="1"
             android:textSize="16sp" />
 
         <TextView

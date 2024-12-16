@@ -71,7 +71,7 @@ public static void stampaNews() throws IOException {
 
     if (newsList != null && !newsList.isEmpty()) {
         News firstNews = newsList.get(0);
-        String plainText = Jsoup.parse(firstNews.getBody()).text();
+        String plainText = Jsoup.parse(firstNews.getTitle()).text();
         subHeaderText.post(() -> subHeaderText.setText(plainText));
         System.out.println("Titolo: " + firstNews.getTitle());
         System.out.println("Pubblicazione: " + firstNews.getPublication());
