@@ -2,14 +2,18 @@ package it.rizzoli.atthemoment.activity;
 
 import static java.lang.Integer.parseInt;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,6 +31,20 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction() .add(R.id.container_tab_bar, new FragTabBar()).commit();
         }
+
+        //Animazione
+        TextView subText = findViewById(R.id.subHeaderText);
+        subText.post(() -> {
+
+            subText.setTranslationX(getResources().getDisplayMetrics().widthPixels);
+            ObjectAnimator animator = ObjectAnimator.ofFloat(subText, "translationX", -(getResources().getDisplayMetrics().widthPixels));
+
+            animator.setDuration(8000);
+            animator.setInterpolator(new LinearInterpolator());
+
+            animator.start();
+            animator.setRepeatCount(ValueAnimator.INFINITE);
+        });
 
         Button button = findViewById(R.id.button_go_to_second);
         button.setOnClickListener(new View.OnClickListener() {
