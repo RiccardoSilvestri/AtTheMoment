@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
             animator.setRepeatCount(ValueAnimator.INFINITE);
         });
 
-        Button button = findViewById(R.id.button_go_to_second);
+        Button button = findViewById(R.id.button_go_to_news);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MapActivity.class);
+            Intent intent = new Intent(MainActivity.this, NewsActivity.class);
             startActivity(intent);
         });
 
@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
     static String test = "";
     public static void stampaNews() throws IOException {
         List<News> newsList = CallAtm.newsFixGzipResponse(CallAtm.news());
-
         if (newsList != null && !newsList.isEmpty()) {
             News firstNews = newsList.get(0);
             String plainText = Jsoup.parse(firstNews.getBody()).text();
@@ -102,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Nessuna notizia disponibile.");
         }
     }
-
-
 
 
     @Override
