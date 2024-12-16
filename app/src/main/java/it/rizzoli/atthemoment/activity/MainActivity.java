@@ -4,7 +4,6 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,9 +26,7 @@ import it.rizzoli.atthemoment.model.principali.News;
 import it.rizzoli.atthemoment.service.CallAtm;
 
 public class MainActivity extends AppCompatActivity {
-    private Handler handler;
-    private Runnable updateTask;
-    private TextView subHeaderText;
+    private static TextView subHeaderText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,37 +39,26 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
-        //Animazione
         TextView subText = findViewById(R.id.subHeaderText);
         subText.post(() -> {
-
             subText.setTranslationX(getResources().getDisplayMetrics().widthPixels);
             ObjectAnimator animator = ObjectAnimator.ofFloat(subText, "translationX", -(getResources().getDisplayMetrics().widthPixels));
-
             animator.setDuration(8000);
             animator.setInterpolator(new LinearInterpolator());
-
             animator.start();
             animator.setRepeatCount(ValueAnimator.INFINITE);
         });
 
         Button button = findViewById(R.id.button_go_to_second);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MapActivity.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, MapActivity.class);
+            startActivity(intent);
         });
 
-
-        View.OnClickListener buttonClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LinesActivity.class);
-                intent.putExtra("Bottone", Integer.parseInt(v.getTag().toString()));
-                startActivity(intent);
-            }
+        View.OnClickListener buttonClickListener = v -> {
+            Intent intent = new Intent(MainActivity.this, LinesActivity.class);
+            intent.putExtra("Bottone", Integer.parseInt(v.getTag().toString()));
+            startActivity(intent);
         };
 
         LinearLayout buttonGoTram = findViewById(R.id.button_go_tram);
@@ -87,9 +73,8 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout buttonGoTreno = findViewById(R.id.button_go_treno);
         buttonGoTreno.setOnClickListener(buttonClickListener);
 
-        handler = new Handler();
-
         subHeaderText = findViewById(R.id.subHeaderText);
+
         new Thread(() -> {
             try {
                 stampaNews();
@@ -97,60 +82,29 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("MainActivity", "Errore durante la fetch delle news", e);
             }
         }).start();
-
     }
+
     static String test = "";
-    public void startUpdating() {
-        if (updateTask == null) {
-            updateTask = new Runnable() {
-                @Override
-                public void run() {
-                    if (test.length() > 0) {
-                        test = test.substring(1);
-                        subHeaderText.setText(test);
-                    } else {
-                        Log.d("PeriodicUpdater", "Stringa vuota, nessun carattere da rimuovere.");
-                    }
-                    handler.postDelayed(this, 500);
-                }
-            };
-
-            handler.post(updateTask);
-        }
-    }
-
     public static void stampaNews() throws IOException {
         List<News> newsList = CallAtm.newsFixGzipResponse(CallAtm.news());
-        for (News news : newsList) {
-            System.out.println("Titolo: " + news.getTitle());
-            System.out.println("Pubblicazione: " + news.getPublication());
-            System.out.println("Scadenza: " + news.getExpiration());
-            System.out.println("Corpo del messaggio: " + news.getBody());
-            System.out.println("Linee: " + String.join(", ", news.getLines()));
-            System.out.println("GUID: " + news.getGuid());
-            String plainText = Jsoup.parse(news.getBody()).text();
-            test = test + plainText;
-        }
 
-    }
-    public void stopUpdating() {
-        if (handler != null && updateTask != null) {
-            handler.removeCallbacks(updateTask);
-            updateTask = null;
+        if (newsList != null && !newsList.isEmpty()) {
+            News firstNews = newsList.get(0);
+            String plainText = Jsoup.parse(firstNews.getBody()).text();
+            subHeaderText.post(() -> subHeaderText.setText(plainText));
+            System.out.println("Titolo: " + firstNews.getTitle());
+            System.out.println("Pubblicazione: " + firstNews.getPublication());
+            System.out.println("Scadenza: " + firstNews.getExpiration());
+            System.out.println("Corpo del messaggio: " + firstNews.getBody());
+            System.out.println("Linee: " + String.join(", ", firstNews.getLines()));
+            System.out.println("GUID: " + firstNews.getGuid());
+        } else {
+            System.out.println("Nessuna notizia disponibile.");
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        startUpdating();
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        stopUpdating();
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

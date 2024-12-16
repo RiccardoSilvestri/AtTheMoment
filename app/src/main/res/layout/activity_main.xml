@@ -37,7 +37,6 @@
             android:text="Informazioni recenti"
             android:textColor="#E0E0E0"
             android:textSize="16sp"
-            android:ellipsize="end"
             android:maxLines="1" />
 
     </LinearLayout>
