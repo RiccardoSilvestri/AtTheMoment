@@ -12,10 +12,13 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.atthemoment.R;
 
@@ -29,22 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction() .add(R.id.container_tab_bar, new FragTabBar()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container_tab_bar, new FragTabBar()).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.container_header, new FragHeader()).commit();
         }
 
-        //Animazione
-        TextView subText = findViewById(R.id.subHeaderText);
-        subText.post(() -> {
-
-            subText.setTranslationX(getResources().getDisplayMetrics().widthPixels);
-            ObjectAnimator animator = ObjectAnimator.ofFloat(subText, "translationX", -(getResources().getDisplayMetrics().widthPixels));
-
-            animator.setDuration(8000);
-            animator.setInterpolator(new LinearInterpolator());
-
-            animator.start();
-            animator.setRepeatCount(ValueAnimator.INFINITE);
-        });
 
         Button button = findViewById(R.id.button_go_to_second);
         button.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
 
         View.OnClickListener buttonClickListener = new View.OnClickListener() {
