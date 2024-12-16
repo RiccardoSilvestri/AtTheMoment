@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
+
 import org.jsoup.Jsoup;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,9 @@ import it.rizzoli.atthemoment.service.CallAtm;
 
 
 public class FragHeader extends Fragment {
-    public FragHeader() {}
+    public FragHeader() {
+    }
+
     private static TextView subHeaderText;
 
     @Override
@@ -65,22 +68,23 @@ public class FragHeader extends Fragment {
 
     }
 
-static String test = "";
-public static void stampaNews() throws IOException {
-    List<News> newsList = CallAtm.newsFixGzipResponse(CallAtm.news());
+    static String test = "";
 
-    if (newsList != null && !newsList.isEmpty()) {
-        News firstNews = newsList.get(0);
-        String plainText = Jsoup.parse(firstNews.getTitle()).text();
-        subHeaderText.post(() -> subHeaderText.setText(plainText));
-        System.out.println("Titolo: " + firstNews.getTitle());
-        System.out.println("Pubblicazione: " + firstNews.getPublication());
-        System.out.println("Scadenza: " + firstNews.getExpiration());
-        System.out.println("Corpo del messaggio: " + firstNews.getBody());
-        System.out.println("Linee: " + String.join(", ", firstNews.getLines()));
-        System.out.println("GUID: " + firstNews.getGuid());
-    } else {
-        System.out.println("Nessuna notizia disponibile.");
+    public static void stampaNews() throws IOException {
+        List<News> newsList = CallAtm.newsFixGzipResponse(CallAtm.news());
+
+        if (newsList != null && !newsList.isEmpty()) {
+            News firstNews = newsList.get(0);
+            String plainText = Jsoup.parse(firstNews.getTitle()).text();
+            subHeaderText.post(() -> subHeaderText.setText(plainText));
+            System.out.println("Titolo: " + firstNews.getTitle());
+            System.out.println("Pubblicazione: " + firstNews.getPublication());
+            System.out.println("Scadenza: " + firstNews.getExpiration());
+            System.out.println("Corpo del messaggio: " + firstNews.getBody());
+            System.out.println("Linee: " + String.join(", ", firstNews.getLines()));
+            System.out.println("GUID: " + firstNews.getGuid());
+        } else {
+            System.out.println("Nessuna notizia disponibile.");
+        }
     }
-}
 }
