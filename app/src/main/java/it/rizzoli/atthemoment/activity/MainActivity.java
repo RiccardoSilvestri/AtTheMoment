@@ -26,7 +26,7 @@ import it.rizzoli.atthemoment.model.principali.News;
 import it.rizzoli.atthemoment.service.CallAtm;
 
 public class MainActivity extends AppCompatActivity {
-    private static TextView subHeaderText;
+    //private static TextView subHeaderText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
