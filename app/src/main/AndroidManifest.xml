@@ -45,6 +45,12 @@
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
+        <activity
+            android:name="it.rizzoli.atthemoment.activity.FindAroundMeActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="true">
+        </activity>
+
 
         <activity android:name="it.rizzoli.atthemoment.activity.InfoLineActivity"
             android:windowSoftInputMode="adjustPan"/>

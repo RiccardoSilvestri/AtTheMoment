@@ -165,6 +165,17 @@
         android:textSize="16sp"
         android:padding="12dp"
         />
+    <Button
+        android:id="@+id/button_find_around_me"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:layout_gravity="left"
+        android:text="Find Around Me"
+        android:background="#E0E0E0"
+        android:textSize="16sp"
+        android:padding="12dp"
+        />
 
     <FrameLayout
         android:id="@+id/container_tab_bar"

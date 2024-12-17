@@ -62,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button buttonFindArroundMe = findViewById(R.id.button_find_around_me);
+        buttonFindArroundMe.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FindAroundMeActivity.class);
+            startActivity(intent);
+        });
+
         View.OnClickListener buttonClickListener = v -> {
             Intent intent = new Intent(MainActivity.this, LinesActivity.class);
             intent.putExtra("Bottone", Integer.parseInt(v.getTag().toString()));
