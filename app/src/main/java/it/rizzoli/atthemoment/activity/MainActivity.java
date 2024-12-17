@@ -26,8 +26,6 @@ import it.rizzoli.atthemoment.model.principali.News;
 import it.rizzoli.atthemoment.service.CallAtm;
 
 public class MainActivity extends AppCompatActivity {
-    //private static TextView subHeaderText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,20 +39,6 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container_header, new FragHeader())
                     .commit();
         }
-
-        /*
-        TextView subText = findViewById(R.id.subHeaderText);
-        subText.post(() -> {
-            subText.setTranslationX(getResources().getDisplayMetrics().widthPixels);
-            ObjectAnimator animator = ObjectAnimator.ofFloat(subText, "translationX", -(getResources().getDisplayMetrics().widthPixels));
-            animator.setDuration(8000);
-            animator.setInterpolator(new LinearInterpolator());
-            animator.start();
-            animator.setRepeatCount(ValueAnimator.INFINITE);
-        });
-        */
-
-
 
         Button button = findViewById(R.id.button_go_to_news);
         button.setOnClickListener(v -> {
@@ -85,37 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout buttonGoTreno = findViewById(R.id.button_go_treno);
         buttonGoTreno.setOnClickListener(buttonClickListener);
-/*
-        subHeaderText = findViewById(R.id.subHeaderText);
-
-        new Thread(() -> {
-            try {
-                stampaNews();
-            } catch (IOException e) {
-                Log.e("MainActivity", "Errore durante la fetch delle news", e);
-            }
-        }).start();
-    }
-
-    static String test = "";
-    public static void stampaNews() throws IOException {
-        List<News> newsList = CallAtm.newsFixGzipResponse(CallAtm.news());
-
-        if (newsList != null && !newsList.isEmpty()) {
-            News firstNews = newsList.get(0);
-            String plainText = Jsoup.parse(firstNews.getBody()).text();
-            subHeaderText.post(() -> subHeaderText.setText(plainText));
-            System.out.println("Titolo: " + firstNews.getTitle());
-            System.out.println("Pubblicazione: " + firstNews.getPublication());
-            System.out.println("Scadenza: " + firstNews.getExpiration());
-            System.out.println("Corpo del messaggio: " + firstNews.getBody());
-            System.out.println("Linee: " + String.join(", ", firstNews.getLines()));
-            System.out.println("GUID: " + firstNews.getGuid());
-        } else {
-            System.out.println("Nessuna notizia disponibile.");
-        }
-
-         */
     }
 
     @Override
