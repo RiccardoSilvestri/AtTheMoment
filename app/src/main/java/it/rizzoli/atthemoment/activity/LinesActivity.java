@@ -11,9 +11,12 @@ import it.rizzoli.atthemoment.controller.RicercaMezzi;
 import it.rizzoli.atthemoment.API.ApiListaMezzi;
 import android.text.TextUtils;
 import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-public class LinesActivity extends Activity {
+public class LinesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,15 @@ public class LinesActivity extends Activity {
 
         Intent intent = getIntent();
         int bottone = intent.getIntExtra("Bottone", -1);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container_header, new FragHeader())
+                    .commit();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container_tab_bar, new FragTabBar())
+                    .commit();
+        }
 
         Button buttonGoToMain = findViewById(R.id.button_go_to_main);
         ListView listView = findViewById(R.id.lista);

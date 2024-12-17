@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.atthemoment.R;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import it.rizzoli.atthemoment.controller.RicercaInfoMezzo;
 import it.rizzoli.atthemoment.API.ApiMezzo;
 import it.rizzoli.atthemoment.model.Stop;
 
-public class InfoLineActivity extends Activity {
+public class InfoLineActivity extends AppCompatActivity {
     RadioGroup andataRitornoRadioGroup;
     SearchView searchView;
     ArrayAdapter<String> fermateAdapter;
@@ -32,6 +34,12 @@ public class InfoLineActivity extends Activity {
         searchView = findViewById(R.id.searchView);
         listaFermate();
         andataRitornoRadioGroup.setOnCheckedChangeListener((x, y) -> listaFermate());
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container_header, new FragHeader())
+                    .commit();
+        }
 
     }
 
