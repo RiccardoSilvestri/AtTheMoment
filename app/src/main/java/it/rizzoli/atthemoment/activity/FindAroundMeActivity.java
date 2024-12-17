@@ -1,11 +1,13 @@
 package it.rizzoli.atthemoment.activity;
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,10 +42,12 @@ public class FindAroundMeActivity extends AppCompatActivity implements LocationL
     private void startLocationUpdates() {
         try {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 5, this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 5, this);
         } catch (SecurityException e) {
             Log.e("FindAroundMeActivity", "Location permission denied", e);
         }
     }
+
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
@@ -53,6 +57,12 @@ public class FindAroundMeActivity extends AppCompatActivity implements LocationL
         Log.d("FindAroundMe", "Latitude: " + latitude + ", Longitude: " + longitude);
 
         runOnUiThread(() -> test.setText("Latitude: " + latitude + ", Longitude: " + longitude));
+
+        Intent intent = new Intent(FindAroundMeActivity.this, LinesActivityAroundMe.class);
+            intent.putExtra("latitude", latitude);
+            intent.putExtra("longitude", longitude);
+            startActivity(intent);
+
     }
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {}
@@ -60,9 +70,6 @@ public class FindAroundMeActivity extends AppCompatActivity implements LocationL
     public void onProviderEnabled(@NonNull String provider) {}
     @Override
     public void onProviderDisabled(@NonNull String provider) {}
-
-
-
 
 
 
