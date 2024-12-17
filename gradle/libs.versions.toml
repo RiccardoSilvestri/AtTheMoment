@@ -3,6 +3,7 @@ agp = "8.7.2"
 appcompatVersion = "1.3.1"
 fragment = "1.8.5"
 gson = "2.11.0"
+jsoup = "1.15.3"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
@@ -11,6 +12,7 @@ material = "1.10.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 osmdroidAndroid = "6.1.16"
+osmdroidAndroidVersion = "6.1.11"
 unirestJava = "3.13.9"
 playServicesMaps = "19.0.0"
 
@@ -18,6 +20,7 @@ playServicesMaps = "19.0.0"
 appcompat-v131 = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 fragment = { module = "androidx.fragment:fragment", version.ref = "fragment" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -26,6 +29,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 osmdroid-android = { module = "org.osmdroid:osmdroid-android", version.ref = "osmdroidAndroid" }
+osmdroid-android-v6111 = { module = "org.osmdroid:osmdroid-android", version.ref = "osmdroidAndroidVersion" }
 unirest-java = { module = "com.konghq:unirest-java", version.ref = "unirestJava" }
 unirest-objectmapper-jackson = { module = "com.konghq:unirest-objectmapper-jackson", version.ref = "unirestJava" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
