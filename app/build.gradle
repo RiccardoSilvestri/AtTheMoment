@@ -32,8 +32,8 @@ android {
 }
 
 dependencies {
-    implementation 'org.osmdroid:osmdroid-android:6.1.11'
-    implementation 'org.jsoup:jsoup:1.15.3'
+    implementation libs.jsoup
+    implementation libs.osmdroid.android.v6111
     implementation libs.appcompat.v131
     implementation libs.fragment
     implementation libs.gson
