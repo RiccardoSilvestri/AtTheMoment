@@ -1,4 +1,4 @@
-package it.rizzoli.atthemoment.activity;
+package it.rizzoli.atthemoment.controller;
 
 import android.Manifest;
 import android.content.Context;

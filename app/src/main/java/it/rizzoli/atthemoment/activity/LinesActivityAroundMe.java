@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import it.rizzoli.atthemoment.API.ApiListaMezzi;
+import it.rizzoli.atthemoment.controller.FindAroundMeHelper;
 import it.rizzoli.atthemoment.controller.RicercaAroundMe;
 
 public class LinesActivityAroundMe extends AppCompatActivity {
