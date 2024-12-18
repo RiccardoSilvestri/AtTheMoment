@@ -33,7 +33,7 @@ public class CallAtm {
     }
 
     public static InputStreamReader infoAroundMe(double LocY, double LocX) throws IOException {
-        String link = "https://giromilano.atm.it/proxy.tpportal/api/tpPortal/tpl/journeyPatterns/nearest?radius=500&Point.Y="+LocY+"&Point.X="+LocX;
+        String link = "https://giromilano.atm.it/proxy.tpportal/api/tpPortal/tpl/journeyPatterns/nearest?radius=200&Point.Y="+LocY+"&Point.X="+LocX;
         return fetchCall(link);
     }
 
