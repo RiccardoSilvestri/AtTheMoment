@@ -35,6 +35,7 @@
 
             <Button
                 android:id="@+id/navTrain"
+                android:tag="2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -58,6 +59,7 @@
 
             <Button
                 android:id="@+id/navTram"
+                android:tag="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -81,6 +83,7 @@
 
             <Button
                 android:id="@+id/navMetro"
+                android:tag="0"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
@@ -104,6 +107,7 @@
 
             <Button
                 android:id="@+id/navBus"
+                android:tag="3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"

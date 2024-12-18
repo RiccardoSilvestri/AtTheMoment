@@ -37,6 +37,15 @@ public class LinesActivityAroundMe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
 
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container_tab_bar, new FragTabBar())
+                    .commit();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container_header, new FragHeader())
+                    .commit();
+        }
+
         progressBar = findViewById(R.id.progressBar);
         Button buttonGoToMain = findViewById(R.id.button_go_to_main);
         ListView listView = findViewById(R.id.lista);
@@ -55,7 +64,6 @@ public class LinesActivityAroundMe extends AppCompatActivity {
             public void onLocationRetrieved(double latitude, double longitude) {
                 executorService.execute(() -> {
                     runOnUiThread(() -> {
-                        progressBar.setVisibility(View.GONE);
                         Log.d("LinesActivityAroundMe", "Latitude: " + latitude + ", Longitude: " + longitude);
                     });
 
@@ -69,6 +77,8 @@ public class LinesActivityAroundMe extends AppCompatActivity {
                                 mezziArray.add(mezzo.getCode());
                                 mezziArrayNomi.add(mezzo.getLineDescription());
                             }
+                            progressBar.setVisibility(View.GONE);
+
 
                             ArrayAdapter<String> listaMezziAdapter = new ArrayAdapter<>(
                                     LinesActivityAroundMe.this,

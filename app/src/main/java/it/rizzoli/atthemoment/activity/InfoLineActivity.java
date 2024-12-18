@@ -7,6 +7,7 @@ import android.util.Log;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
@@ -39,13 +40,13 @@ public class InfoLineActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         listaFermate();
         andataRitornoRadioGroup.setOnCheckedChangeListener((x, y) -> listaFermate());
-
+        Button buttonGoBack = findViewById(R.id.button_go_back);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container_header, new FragHeader())
                     .commit();
         }
-
+        buttonGoBack.setOnClickListener(v -> finish());
     }
 
     private void listaFermate() {
@@ -107,6 +108,7 @@ public class InfoLineActivity extends AppCompatActivity {
 
                 Log.i("InfoLineActivity", "Fermate caricate con successo.");
             });
+
 
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
