@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100"
-    android:orientation="vertical"
     android:background="@drawable/gradient_background_page1"
+    android:orientation="vertical"
+    android:weightSum="100"
     tools:context="it.rizzoli.atthemoment.activity.MainActivity">
 
     <FrameLayout
@@ -22,22 +21,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="61"
-        android:rowCount="2"
         android:columnCount="2"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:rowCount="2">
 
         <LinearLayout
             android:id="@+id/button_go_tram"
             android:layout_width="0dp"
-            android:tag="1"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_margin="8dp"
+            android:background="@drawable/button_background"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:tag="1">
 
             <ImageView
                 android:id="@+id/tramIcon"
@@ -49,27 +48,27 @@
                 android:id="@+id/tramText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/tiny5"
+                android:gravity="center"
+                android:paddingTop="8dp"
                 android:text="TRAM"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
-            android:paddingTop="8dp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <!-- Bus Button -->
         <LinearLayout
             android:id="@+id/button_go_autobus"
-            android:tag="3"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_margin="8dp"
+            android:background="@drawable/button_background"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:tag="3">
 
             <ImageView
                 android:id="@+id/busIcon"
@@ -81,27 +80,27 @@
                 android:id="@+id/busText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/tiny5"
+                android:gravity="center"
+                android:paddingTop="8dp"
                 android:text="BUS"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
 
-                android:paddingTop="8dp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/button_go_treno"
-            android:tag="2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_margin="8dp"
+            android:background="@drawable/button_background"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:tag="2">
 
             <ImageView
                 android:id="@+id/trainIcon"
@@ -113,27 +112,27 @@
                 android:id="@+id/trainText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/tiny5"
+                android:gravity="center"
+                android:paddingTop="8dp"
                 android:text="TRENO"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
 
-                android:paddingTop="8dp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/button_go_metro"
-            android:tag="0"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_margin="8dp"
+            android:background="@drawable/button_background"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@drawable/button_background"
-            android:padding="16dp">
+            android:padding="16dp"
+            android:tag="0">
 
             <ImageView
                 android:id="@+id/metroIcon"
@@ -145,44 +144,52 @@
                 android:id="@+id/metroText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/tiny5"
+                android:gravity="center"
+                android:paddingTop="8dp"
                 android:text="METRO"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                android:gravity="center"
-                android:fontFamily="@font/tiny5"
-                android:paddingTop="8dp" />
+                android:textSize="16sp" />
         </LinearLayout>
     </GridLayout>
 
-    <Button
-        android:id="@+id/button_go_to_news"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:layout_gravity="center"
-        android:text="News"
-        android:background="#E0E0E0"
-        android:textSize="16sp"
-        android:padding="12dp"
-        />
-    <Button
-        android:id="@+id/button_find_around_me"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:layout_gravity="left"
-        android:text="Find Around Me"
-        android:background="#E0E0E0"
-        android:textSize="16sp"
-        android:padding="12dp"
-        />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_go_to_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_weight="1"
+            android:background="#E0E0E0"
+            android:padding="10dp"
+            android:layout_margin="2dp"
+            android:text="News"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/button_find_around_me"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="2dp"
+
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:width="100dp"
+            android:background="#E0E0E0"
+            android:padding="10dp"
+            android:text="Find Around Me"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/container_tab_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="12"
-        />
+        android:layout_weight="12" />
 
 </LinearLayout>
 
