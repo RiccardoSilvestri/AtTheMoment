@@ -19,6 +19,8 @@ import androidx.core.app.ActivityCompat;
 import com.example.atthemoment.R;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import it.rizzoli.atthemoment.API.ApiListaMezzi;
 import it.rizzoli.atthemoment.controller.RicercaAroundMe;
@@ -27,6 +29,7 @@ public class LinesActivityAroundMe extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private FindAroundMeHelper findAroundMeHelper;
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +52,12 @@ public class LinesActivityAroundMe extends AppCompatActivity {
         findAroundMeHelper.startLocationUpdates(new FindAroundMeHelper.LocationCallback() {
             @Override
             public void onLocationRetrieved(double latitude, double longitude) {
-                runOnUiThread(() -> {
-                    progressBar.setVisibility(View.GONE);
-                    Log.d("LinesActivityAroundMe", "Latitude: " + latitude + ", Longitude: " + longitude);
+                executorService.execute(() -> {
+                    runOnUiThread(() -> {
+                        progressBar.setVisibility(View.GONE);
+                        Log.d("LinesActivityAroundMe", "Latitude: " + latitude + ", Longitude: " + longitude);
+                    });
 
-                    // Carica i mezzi intorno alla posizione
                     RicercaAroundMe ricercaAroundMe = new RicercaAroundMe();
                     ricercaAroundMe.listaMezziAroundMe(latitude, longitude, mezziList -> {
                         runOnUiThread(() -> {
@@ -65,7 +69,6 @@ public class LinesActivityAroundMe extends AppCompatActivity {
                                 mezziArrayNomi.add(mezzo.getLineDescription());
                             }
 
-                            // Adapter per la lista
                             ArrayAdapter<String> listaMezziAdapter = new ArrayAdapter<>(
                                     LinesActivityAroundMe.this,
                                     android.R.layout.simple_expandable_list_item_1,
@@ -123,5 +126,6 @@ public class LinesActivityAroundMe extends AppCompatActivity {
         if (findAroundMeHelper != null) {
             findAroundMeHelper.stopLocationUpdates();
         }
+        executorService.shutdown();
     }
 }
