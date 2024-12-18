@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,8 @@ public class FindAroundMeActivity extends AppCompatActivity implements LocationL
     private TextView test;
     private LocationManager locationManager;
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,8 @@ public class FindAroundMeActivity extends AppCompatActivity implements LocationL
         setContentView(R.layout.activity_around);
 
         test = findViewById(R.id.TEST);
+        progressBar = findViewById(R.id.progressBar);
+
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -41,9 +46,12 @@ public class FindAroundMeActivity extends AppCompatActivity implements LocationL
 
     private void startLocationUpdates() {
         try {
+            progressBar.setVisibility(View.VISIBLE);
+
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 5, this);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 5, this);
         } catch (SecurityException e) {
+            progressBar.setVisibility(View.GONE);
             Log.e("FindAroundMeActivity", "Location permission denied", e);
         }
     }
@@ -57,7 +65,7 @@ public class FindAroundMeActivity extends AppCompatActivity implements LocationL
         Log.d("FindAroundMe", "Latitude: " + latitude + ", Longitude: " + longitude);
 
         runOnUiThread(() -> test.setText("Latitude: " + latitude + ", Longitude: " + longitude));
-
+        progressBar.setVisibility(View.GONE);
         Intent intent = new Intent(FindAroundMeActivity.this, LinesActivityAroundMe.class);
             intent.putExtra("latitude", latitude);
             intent.putExtra("longitude", longitude);

@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
 
@@ -24,11 +26,14 @@ public class InfoLineActivity extends AppCompatActivity {
     RadioGroup andataRitornoRadioGroup;
     SearchView searchView;
     ArrayAdapter<String> fermateAdapter;
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transport);
+        progressBar = findViewById(R.id.progressBar);
 
         andataRitornoRadioGroup = findViewById(R.id.andataRitornoRadioGroup);
         searchView = findViewById(R.id.searchView);
@@ -60,6 +65,7 @@ public class InfoLineActivity extends AppCompatActivity {
 
     private void tentaCaricamentoFermate(ListView listViewStops, String idMezzo, int andataRitornoSwitch) {
         RicercaInfoMezzo ricercaInfoMezzo = new RicercaInfoMezzo();
+        progressBar.setVisibility(View.VISIBLE);
 
         ricercaInfoMezzo.infoMezzo(idMezzo, andataRitornoSwitch, infoMezzoList -> {
             runOnUiThread(() -> {
@@ -84,6 +90,7 @@ public class InfoLineActivity extends AppCompatActivity {
                         android.R.layout.simple_list_item_1,
                         fermateArray
                 );
+                progressBar.setVisibility(View.GONE);
 
                 listViewStops.setAdapter(fermateAdapter);
                 listViewStops.setOnItemClickListener((adapterView, view, position, id) -> {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -14,6 +15,7 @@ import it.rizzoli.atthemoment.controller.RicercaAroundMe;
 import it.rizzoli.atthemoment.controller.RicercaMezzi;
 import it.rizzoli.atthemoment.API.ApiListaMezzi;
 import android.text.TextUtils;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,11 +24,15 @@ import java.util.ArrayList;
 
 public class LinesActivityAroundMe extends AppCompatActivity {
 
+    private ProgressBar progressBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
+        progressBar = findViewById(R.id.progressBar);
 
 
         Intent intent = getIntent();
@@ -50,6 +56,8 @@ public class LinesActivityAroundMe extends AppCompatActivity {
         SearchView searchView = findViewById(R.id.searchView);
 
         RicercaAroundMe ricercaAroundMe = new RicercaAroundMe();
+        progressBar.setVisibility(View.VISIBLE);
+
         ricercaAroundMe.listaMezziAroundMe(x,y, mezziList -> {
             runOnUiThread(() -> {
                 ArrayList<String> mezziArray = new ArrayList<>();
@@ -60,6 +68,8 @@ public class LinesActivityAroundMe extends AppCompatActivity {
                         mezziArrayNomi.add(mezzo.getLineDescription());
 
                 }
+                progressBar.setVisibility(View.GONE);
+
                 ArrayAdapter<String> listaMezziAdapter = new ArrayAdapter<>(
                         LinesActivityAroundMe.this,
                         android.R.layout.simple_expandable_list_item_1,

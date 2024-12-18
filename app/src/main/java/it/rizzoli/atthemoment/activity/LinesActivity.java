@@ -3,6 +3,7 @@ package it.rizzoli.atthemoment.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -10,6 +11,7 @@ import com.example.atthemoment.R;
 import it.rizzoli.atthemoment.controller.RicercaMezzi;
 import it.rizzoli.atthemoment.API.ApiListaMezzi;
 import android.text.TextUtils;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,11 +20,17 @@ import java.util.ArrayList;
 
 public class LinesActivity extends AppCompatActivity {
 
+    private ProgressBar progressBar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lines);
+
+        progressBar = findViewById(R.id.progressBar);
+
 
         Intent intent = getIntent();
         int bottone = intent.getIntExtra("Bottone", -1);
@@ -41,8 +49,12 @@ public class LinesActivity extends AppCompatActivity {
         SearchView searchView = findViewById(R.id.searchView);
 
         RicercaMezzi ricercaMezzi = new RicercaMezzi();
+        progressBar.setVisibility(View.VISIBLE);
+
         ricercaMezzi.listaMezzi(bottone, mezziList -> {
+
             runOnUiThread(() -> {
+
                 ArrayList<String> mezziArray = new ArrayList<>();
                 ArrayList<String> mezziArrayNomi = new ArrayList<>();
 
@@ -52,6 +64,8 @@ public class LinesActivity extends AppCompatActivity {
                         mezziArrayNomi.add(mezzo.getLineDescription());
                     }
                 }
+                progressBar.setVisibility(View.GONE);
+
                 ArrayAdapter<String> listaMezziAdapter = new ArrayAdapter<>(
                         LinesActivity.this,
                         android.R.layout.simple_expandable_list_item_1,
@@ -65,9 +79,11 @@ public class LinesActivity extends AppCompatActivity {
 
                     System.out.println("Clicked item code: " + selectedCode);
 
+
                     Intent intent2 = new Intent(LinesActivity.this, InfoLineActivity.class);
                     intent2.putExtra("Mezzo", selectedCode);
                     startActivity(intent2);
+
                 });
 
                 buttonGoToMain.setOnClickListener(v -> {

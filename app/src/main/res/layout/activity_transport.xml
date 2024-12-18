@@ -75,6 +75,11 @@
         </SearchView>
 
     </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:visibility="gone" />
     <ListView
         android:id="@+id/lista"
         android:layout_width="match_parent"
