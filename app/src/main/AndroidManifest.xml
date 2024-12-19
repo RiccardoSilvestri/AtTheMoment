@@ -22,6 +22,7 @@
 
     <activity
         android:name="it.rizzoli.atthemoment.activity.MainActivity"
+        android:screenOrientation="portrait"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -30,36 +31,37 @@
     </activity>
     <activity
         android:name="it.rizzoli.atthemoment.junk.SecondActivity"
+        android:screenOrientation="portrait"
         android:exported="true">
     </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.NewsActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.LinesActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.StopActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name="it.rizzoli.atthemoment.activity.FindAroundMeActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.LinesActivityAroundMe"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"
             android:exported="true">
         </activity>
 
 
         <activity android:name="it.rizzoli.atthemoment.activity.InfoLineActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan"/>
 </application>
 
