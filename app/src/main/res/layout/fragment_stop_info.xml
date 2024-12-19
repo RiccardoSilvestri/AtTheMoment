@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
-    <!-- Number on the left side -->
     <TextView
         android:id="@+id/bookinfo"
         android:layout_width="wrap_content"
@@ -23,9 +22,6 @@
         android:textSize="22sp"
         android:fontFamily="@font/metro_time_sign_regular"
         android:textColor="@color/yellow_led" />
-
-    <!-- Description on the right side -->
-
 
         <TextView
             android:id="@+id/description"

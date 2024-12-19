@@ -33,10 +33,10 @@ public class FindAroundMeHelper implements LocationListener {
             callback.onError("Location permission not granted");
             return;
         }
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 5, this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 5, this);
+        }
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 5, this);
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 5, this);
-    }
 
     public void stopLocationUpdates() {
         locationManager.removeUpdates(this);
