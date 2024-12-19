@@ -29,11 +29,6 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity
-        android:name="it.rizzoli.atthemoment.junk.SecondActivity"
-        android:screenOrientation="portrait"
-        android:exported="true">
-    </activity>
         <activity
             android:name="it.rizzoli.atthemoment.activity.NewsActivity"
             android:screenOrientation="portrait"
