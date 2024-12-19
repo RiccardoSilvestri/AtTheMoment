@@ -2,12 +2,15 @@ package it.rizzoli.atthemoment.activity;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -37,8 +40,6 @@ public class FragHeader extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(com.example.atthemoment.R.layout.fragment_header, container, false);
 
-        //Animazione
-        //FrameLayout containerHeader = findViewById(R.id.container_header);
         TextView subText = rootView.findViewById(R.id.subHeaderText);
         subText.post(() -> {
 
@@ -52,8 +53,13 @@ public class FragHeader extends Fragment {
             animator.setRepeatCount(ValueAnimator.INFINITE);
         });
 
+        View.OnClickListener buttonClickListener = v -> {
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
+        };
+        LinearLayout buttonGoMain = rootView.findViewById(R.id.header);
+        buttonGoMain.setOnClickListener(buttonClickListener);
 
-        //subHeaderText = findViewById(R.id.subHeaderText);
         subHeaderText = rootView.findViewById(R.id.subHeaderText);
 
         new Thread(() -> {
