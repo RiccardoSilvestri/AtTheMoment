@@ -11,7 +11,7 @@
         android:id="@+id/container_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="13">
+        android:layout_weight="12">
 
     </FrameLayout>
 
@@ -93,10 +93,10 @@
         android:layout_height="0dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_weight="7"
-        android:background="#E0E0E0"
+        android:layout_weight="8"
+        android:background="@drawable/round_corner_white"
         android:padding="12dp"
-        android:text="← Torna Indietro"
+        android:text="Torna Indietro"
         android:textSize="16sp" />
 
 </LinearLayout>
