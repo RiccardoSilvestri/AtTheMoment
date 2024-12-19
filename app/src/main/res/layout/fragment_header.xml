@@ -33,13 +33,5 @@
             android:maxLines="1"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/subHeaderText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Informazioni recenti"
-            android:textColor="#E0E0E0"
-            android:textSize="16sp" />
     </LinearLayout>
 </RelativeLayout>
