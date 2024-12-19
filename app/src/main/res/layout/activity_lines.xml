@@ -10,7 +10,7 @@
         android:id="@+id/container_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="18">
+        android:layout_weight="13">
 
     </FrameLayout>
 
@@ -19,7 +19,7 @@
         android:layout_height="0dp"
         android:orientation="horizontal"
         android:background="#E0E0E0"
-        android:layout_weight="7"
+        android:layout_weight="8"
         android:padding="8dp"
         android:gravity="center_vertical">
 
@@ -43,7 +43,7 @@
         android:visibility="gone" />
     <ListView
         android:id="@+id/lista"
-        android:layout_weight="57"
+        android:layout_weight="60"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
 
@@ -57,6 +57,7 @@
         android:layout_weight="7"
         android:background="#E0E0E0"
         android:padding="12dp"
+        android:layout_marginTop="10dp"
         android:text="← Torna Indietro"
         android:textSize="16sp" />
 

@@ -12,7 +12,7 @@
         android:id="@+id/container_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="18">
+        android:layout_weight="16">
 
     </FrameLayout>
 
@@ -20,7 +20,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="63"
+        android:layout_weight="65"
         android:columnCount="2"
         android:padding="16dp"
         android:rowCount="2">
