@@ -103,6 +103,7 @@ public class InfoLineActivity extends AppCompatActivity {
 
                     Intent intent2 = new Intent(InfoLineActivity.this, StopActivity.class);
                     intent2.putExtra("Fermata", selectedCode);
+                    intent2.putExtra("IdMezzo",idMezzo);
                     startActivity(intent2);
                 });
 

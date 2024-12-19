@@ -30,12 +30,16 @@ public class StopActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private Runnable updateTask;
     boolean mapUpdated = false;
+    String idMezzo="0";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stop);
         Intent intent = getIntent();
         String input = intent.getStringExtra("Fermata");
+        idMezzo = intent.getStringExtra("IdMezzo");
+
 
 
         updateTask = new Runnable() {
@@ -56,25 +60,34 @@ public class StopActivity extends AppCompatActivity {
         }
         mappa(43,12,"","");
     }
-
     private void infoFermata(String input) {
         RicercaInfoFermata ricercaInfoFermata = new RicercaInfoFermata();
-
         ricercaInfoFermata.infoFermata(input, infofermataList -> {
             runOnUiThread(() -> {
                 Bundle bundle = new Bundle();
+                ApiFermata apiFermata = null;
+
                 if (infofermataList != null && !infofermataList.isEmpty()) {
-                    ApiFermata apiFermata = infofermataList.get(0);
-
-
-                    if (!mapUpdated) {
-                        mappa(apiFermata.getX(), apiFermata.getY(), apiFermata.getBookInfo(), apiFermata.getDescription());
-                        mapUpdated = true;
+                    for (int j = 0; j < infofermataList.size(); j++){
+                        if(infofermataList.get(j).getBookInfo().equals(idMezzo)){
+                            apiFermata = infofermataList.get(j);
+                        }
                     }
 
-                    bundle.putString("descriptionTextView", apiFermata.getDescription());
-                    bundle.putString("bookInfoTextView", apiFermata.getBookInfo());
-                    bundle.putString("waitingMessageTextView", apiFermata.getWaitingMessage());
+                    if (apiFermata != null) {
+                        if (!mapUpdated) {
+                            mappa(apiFermata.getX(), apiFermata.getY(), apiFermata.getBookInfo(), apiFermata.getDescription());
+                            mapUpdated = true;
+                        }
+
+                        bundle.putString("descriptionTextView", apiFermata.getDescription());
+                        bundle.putString("bookInfoTextView", apiFermata.getBookInfo());
+                        bundle.putString("waitingMessageTextView", apiFermata.getWaitingMessage());
+                    } else {
+                        descriptionTextView.setText("Informazioni non trovate");
+                        bookInfoTextView.setText("Nessun dato disponibile");
+                        waitingMessageTextView.setText("Attendi...");
+                    }
                 } else {
                     descriptionTextView.setText("Informazioni non trovate");
                     bookInfoTextView.setText("Nessun dato disponibile");
@@ -94,6 +107,7 @@ public class StopActivity extends AppCompatActivity {
             });
         });
     }
+
 
 
     private void mappa(double x,double y,String numero,String description) {
