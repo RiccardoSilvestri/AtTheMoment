@@ -7,7 +7,7 @@
 - Riccardo Silvestri
 - Diego Bendinelli
 
-AtTheMoment is an Android application developed in Android Studio that uses the API of Milan's public transportation company, ATM, to provide detailed information about public transport vehicles and their stops. The application aims to recreate the interface and functionalities related to viewing stop timings, offering an intuitive and interactive user experience.
+AtTheMoment is an Android application developed in Android Studio that provides detailed information on public transport and related bus stops in Milan City. The application aims to create a minimal interface with features related to the display of parking times, offering an intuitive and interactive user experience.
 
 ## Main Features
 
