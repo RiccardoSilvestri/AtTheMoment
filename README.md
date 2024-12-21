@@ -1,4 +1,6 @@
 # AtTheMoment
+<img src="app/src/main/res/drawable/iconlogo.png" width="150" />
+
 
 ## Developers
 - Leandro Benaglio
