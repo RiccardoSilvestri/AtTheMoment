@@ -1,4 +1,4 @@
-# AtTheMoment SwiftUI Version
+# AtTheMoment SwiftUI
 <img src="icon.png" width="150" />
 
 
