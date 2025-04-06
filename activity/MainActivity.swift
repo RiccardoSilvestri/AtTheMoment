@@ -34,9 +34,9 @@ struct MainActivity: View {
                             if selectedTransport == 3 {
                                 Text("Bus \(mezzo.code)")
                             } else if selectedTransport == 2 {
-                                Text("Tram \(mezzo.code)")
-                            } else if selectedTransport == 1 {
                                 Text("Treno \(mezzo.code)")
+                            } else if selectedTransport == 1 {
+                                Text("Tram \(mezzo.code)")
                             } else {
                                 Text("Mezzo \(mezzo.code)")
                             }
