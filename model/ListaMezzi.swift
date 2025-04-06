@@ -1,4 +1,5 @@
 import Foundation
+
 struct ListaMezzi: Codable {
     let id: String
     let code: String

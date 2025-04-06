@@ -3,14 +3,30 @@ import SwiftUI
 struct FermateListView: View {
     var mezzo: ApiListaMezzi
     @State private var fermateList: [Stop] = []
+    @State private var direzioneSelezionata: Int = 0
+    @State private var searchText = ""
 
-    private let ricercaFermate = RicercaInfoMezzo() // Una classe per ottenere le fermate
+    private let ricercaFermate = RicercaInfoMezzo()
 
     var body: some View {
         VStack {
-            Text("Fermate per \(mezzo.lineDescription)")
+            Text("Fermate per Mezzo \(mezzo.code)")
                 .font(.title)
                 .padding()
+
+            Picker("Direzione", selection: $direzioneSelezionata) {
+                Text("Andata").tag(0)
+                Text("Ritorno").tag(1)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+
+            TextField("Cerca fermata...", text: $searchText)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .onChange(of: searchText) { _ in
+                    filterFermateList()
+                }
 
             if !fermateList.isEmpty {
                 List(fermateList, id: \.code) { fermata in
@@ -25,16 +41,28 @@ struct FermateListView: View {
         .onAppear {
             fetchFermateForMezzo()
         }
+        .onChange(of: direzioneSelezionata) { _ in
+            fetchFermateForMezzo()
+        }
         .navigationTitle(mezzo.lineDescription)
     }
 
     func fetchFermateForMezzo() {
-        print("🔎 Fetching stops for \(mezzo.code)")
-        
-        ricercaFermate.infoMezzo(input: mezzo.code, direzione: 0) { fermate in
+        ricercaFermate.infoMezzo(input: mezzo.code, direzione: direzioneSelezionata) { fermate in
             DispatchQueue.main.async {
                 fermateList = fermate
-                print("📥 Received \(fermate.count) fermate")
+                filterFermateList()
+            }
+        }
+    }
+
+    func filterFermateList() {
+        if searchText.isEmpty {
+            fetchFermateForMezzo()
+        } else {
+            fermateList = fermateList.filter { fermata in
+                fermata.description.lowercased().contains(searchText.lowercased()) ||
+                fermata.code.lowercased().contains(searchText.lowercased())
             }
         }
     }

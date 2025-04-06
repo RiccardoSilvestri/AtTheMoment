@@ -7,7 +7,6 @@ class RicercaAroundMe {
             do {
                 let response = try await CallAtm.infoAroundMe(y: y, x: x)
                 
-                // MODIFICATO: Rimossa la gestione optional
                 let listaMezzi = response.journeyPatterns
                 
                 let result = listaMezzi.map {

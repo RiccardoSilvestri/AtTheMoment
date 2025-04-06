@@ -1,4 +1,5 @@
 import Foundation
+
 struct Location: Codable {
     var x: Double
     var y: Double

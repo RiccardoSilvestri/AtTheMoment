@@ -1,4 +1,5 @@
 import Foundation
+
 struct News: Codable {
     var publication: String
     var expiration: String

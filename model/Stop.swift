@@ -1,4 +1,5 @@
 import Foundation
+
 struct Stop: Codable {
     var operatorCode: String
     var code: String

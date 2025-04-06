@@ -1,8 +1,7 @@
 import Foundation
-import Foundation
 
 struct CodableValue: Codable {
-    let value: Any
+    let value: Any?
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -20,7 +19,7 @@ struct CodableValue: Codable {
         } else if let array = try? container.decode([CodableValue].self) {
             value = array
         } else {
-            value = ()
+            value = nil
         }
     }
 
@@ -45,4 +44,3 @@ struct CodableValue: Codable {
         }
     }
 }
-

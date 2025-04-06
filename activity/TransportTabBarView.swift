@@ -9,9 +9,6 @@ struct TransportTabBarView: View {
             Button("🚋 Tram") {
                 onSelectTransport(1)
             }
-            Button("🚇 Metro") {
-                onSelectTransport(0)
-            }
             Button("🚌 Bus") {
                 onSelectTransport(3)
             }

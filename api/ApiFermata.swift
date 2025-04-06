@@ -1,6 +1,7 @@
 import Foundation
 
-struct ApiFermata: Codable {
+struct ApiFermata: Codable, Identifiable {
+    var id: String { code }
     var description: String
     var bookInfo: String
     var waitingMessage: String
@@ -8,8 +9,7 @@ struct ApiFermata: Codable {
     var x: Double
     var address: String?
     var municipality: String?
-    
-
+    var code: String 
 
     var debugDescription: String {
         return """

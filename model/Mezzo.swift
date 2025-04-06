@@ -1,4 +1,5 @@
 import Foundation
+
 struct Mezzo: Codable {
     var id: String
     var code: String

@@ -1,7 +1,7 @@
 import Foundation
 
 struct Category: Codable {
-    var categoryId: String? 
+    var categoryId: String?
     var categoryName: String?
     var hasTimeTables: Bool?
     var icons: [String]?
