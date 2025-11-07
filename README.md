@@ -5,7 +5,6 @@
 ## Developers
 - Leandro Benaglio
 - Riccardo Silvestri
-- Diego Bendinelli
 
 AtTheMoment is an Android application developed in Android Studio that provides detailed information on public transport and related bus stops in Milan City. The application aims to create a minimal interface with features related to the display of parking times, offering an intuitive and interactive user experience.
 
